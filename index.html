@@ -27,11 +27,17 @@
                     <a href="#home" class="nav-link text-gray-600 hover:text-primary font-medium">Home</a>
                     <a href="#about" class="nav-link text-gray-600 hover:text-primary font-medium">About</a>
                     <a href="#projects" class="nav-link text-gray-600 hover:text-primary font-medium">Projects</a>
+                    <a href="#certificates" class="nav-link text-gray-600 hover:text-primary font-medium">Certificates</a>
                     <a href="#contact" class="nav-link text-gray-600 hover:text-primary font-medium">Contact</a>
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <div class="px-3 py-1 bg-green-50 text-secondary text-xs font-medium rounded-full border border-green-100">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <div class="px-3 py-1 bg-green-50 text-secondary text-xs font-medium rounded-full border border-green-100 available-badge">
                         <span class="w-2 h-2 bg-secondary rounded-full inline-block mr-2"></span>
                         Available
                     </div>
@@ -45,6 +51,7 @@
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
                     <a href="#projects">Projects</a>
+                    <a href="#certificates">Certificates</a>
                     <a href="#contact">Contact</a>
                 </div>
             </div>
@@ -72,14 +79,14 @@
                     
                     <!-- Action Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                        <button class="btn-primary hover-scale">
+                        <a href="assets/documents/Habib_Resume.pdf" download class="btn-primary hover-scale">
                             <i class="fas fa-download mr-2"></i>
                             Download CV
-                        </button>
-                        <button class="btn-secondary hover-scale">
+                        </a>
+                        <a href="#projects" class="btn-secondary hover-scale">
                             <i class="fas fa-eye mr-2"></i>
                             View Portfolio
-                        </button>
+                        </a>
                     </div>
                 </div>
                 
@@ -322,10 +329,10 @@
                                 <i class="fas fa-envelope mr-2 group-hover:rotate-12 transition-transform duration-300"></i>
                                 Contact Me
                             </a>
-                            <button class="px-6 py-3 bg-white/30 backdrop-blur-sm border border-white/40 text-gray-900 rounded-xl font-semibold hover:bg-white/40 transition-all duration-300 shadow-lg hover:shadow-xl group">
+                            <a href="assets/documents/Habib_Resume.pdf" download class="px-6 py-3 bg-white/30 backdrop-blur-sm border border-white/40 text-gray-900 rounded-xl font-semibold hover:bg-white/40 transition-all duration-300 shadow-lg hover:shadow-xl group">
                                 <i class="fas fa-download mr-2 group-hover:translate-y-1 transition-transform duration-300"></i>
                                 Download CV
-                            </button>
+                            </a>
                         </div>
                     </div>
                     
@@ -768,6 +775,138 @@
                     View All Projects on GitHub
                     <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-20 bg-gradient-to-br from-white via-blue-50/30 to-gray-50 relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-20 right-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 left-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <div class="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-accent text-sm font-medium rounded-full shadow-lg">
+                        <i class="fas fa-award mr-2"></i>Achievements
+                    </div>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 relative">
+                    Certificates & Awards
+                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-28 h-1 bg-gradient-to-r from-accent to-primary rounded-full"></div>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Recognition of my learning journey and accomplishments in technology and development
+                </p>
+            </div>
+
+            <!-- Certificates Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Certificate Card 1 -->
+                <div class="certificate-card bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <!-- Certificate Image -->
+                    <div class="relative h-48 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                        <i class="fas fa-certificate text-6xl text-primary/30 group-hover:scale-110 transition-transform duration-300"></i>
+                        <!-- Replace with actual certificate image -->
+                        <!-- <img src="assets/images/certificate1.jpg" alt="Certificate" class="w-full h-full object-cover"> -->
+                    </div>
+                    
+                    <!-- Certificate Content -->
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">
+                                Web Development
+                            </span>
+                            <span class="text-gray-500 text-sm">
+                                <i class="fas fa-calendar-alt mr-1"></i>2026
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">
+                            Certificate Title Here
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Issued by: Organization Name
+                        </p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-medium text-sm hover:underline group/link">
+                            <i class="fas fa-external-link-alt mr-2 group-hover/link:rotate-12 transition-transform duration-300"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Certificate Card 2 -->
+                <div class="certificate-card bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-48 bg-gradient-to-br from-secondary/10 to-accent/10 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                        <i class="fas fa-certificate text-6xl text-secondary/30 group-hover:scale-110 transition-transform duration-300"></i>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-semibold rounded-full">
+                                Computer Literacy
+                            </span>
+                            <span class="text-gray-500 text-sm">
+                                <i class="fas fa-calendar-alt mr-1"></i>2019
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-secondary transition-colors duration-300">
+                            Certificate of Completion – Computer Literacy Training Program
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Issued by: Unitech Educational Program Corporation in partnership with
+                            Asian Institute of Computer Studies (AICS)
+                        </p>
+                        <a href="Computer_Literacy_Certificate.jpg" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-secondary font-medium text-sm hover:underline group/link">
+                            <i class="fas fa-external-link-alt mr-2 group-hover/link:rotate-12 transition-transform duration-300"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Certificate Card 3 -->
+                <div class="certificate-card bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative h-48 bg-gradient-to-br from-accent/10 to-primary/10 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                        <i class="fas fa-certificate text-6xl text-accent/30 group-hover:scale-110 transition-transform duration-300"></i>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full">
+                                Achievement
+                            </span>
+                            <span class="text-gray-500 text-sm">
+                                <i class="fas fa-calendar-alt mr-1"></i>2024
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent transition-colors duration-300">
+                            Certificate Title Here
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Issued by: Organization Name
+                        </p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent font-medium text-sm hover:underline group/link">
+                            <i class="fas fa-external-link-alt mr-2 group-hover/link:rotate-12 transition-transform duration-300"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Coming Soon Note -->
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="400">
+                <div class="inline-flex items-center px-6 py-3 bg-white/30 backdrop-blur-sm border border-white/30 rounded-xl text-gray-600">
+                    <i class="fas fa-hourglass-half mr-2 text-primary"></i>
+                    <span>More certificates coming soon as I continue my learning journey!</span>
+                </div>
             </div>
         </div>
     </section>

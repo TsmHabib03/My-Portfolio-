@@ -124,3 +124,55 @@ document.querySelectorAll('.hover-scale').forEach(element => {
         this.style.transform = 'translateY(0)';
     });
 });
+
+// ===================
+// THEME TOGGLE - Cyberpunk Night Mode
+// ===================
+const themeToggle = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or default to light
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    enableDarkMode(false); // false = no animation on load
+}
+
+// Toggle theme on button click
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const isDark = htmlElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+            disableDarkMode();
+        } else {
+            enableDarkMode(true);
+        }
+    });
+}
+
+function enableDarkMode(animate = true) {
+    htmlElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+    
+    const icon = themeToggle?.querySelector('i');
+    if (icon) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        if (animate) {
+            themeToggle.classList.add('active');
+            setTimeout(() => themeToggle.classList.remove('active'), 500);
+        }
+    }
+}
+
+function disableDarkMode() {
+    htmlElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+    
+    const icon = themeToggle?.querySelector('i');
+    if (icon) {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        themeToggle.classList.add('active');
+        setTimeout(() => themeToggle.classList.remove('active'), 500);
+    }
+}
