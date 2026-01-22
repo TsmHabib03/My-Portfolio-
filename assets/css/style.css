@@ -382,14 +382,43 @@ body {
     transform: translateY(-8px);
 }
 
-[data-theme="dark"] .certificate-card {
+.certificate-card .aspect-\[4\/3\] {
+    aspect-ratio: 4 / 3;
+}
+
+/* Certificate Image Hover Effects */
+.certificate-card img {
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Certificate Cards */
+[data-theme="dark"] .certificate-card > div {
     background: var(--bg-card) !important;
     border-color: var(--border) !important;
 }
 
-[data-theme="dark"] .certificate-card:hover {
+[data-theme="dark"] .certificate-card:hover > div {
     border-color: var(--primary) !important;
     box-shadow: var(--neon-glow) !important;
+}
+
+[data-theme="dark"] .certificate-card .bg-white {
+    background: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] .certificate-card .bg-gray-50,
+[data-theme="dark"] .certificate-card .bg-gradient-to-br {
+    background: var(--bg-primary) !important;
+}
+
+[data-theme="dark"] .certificate-card h3 {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .certificate-card p,
+[data-theme="dark"] .certificate-card span.text-gray-400,
+[data-theme="dark"] .certificate-card span.text-gray-500 {
+    color: var(--text-secondary) !important;
 }
 
 /* ===================

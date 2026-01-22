@@ -804,108 +804,110 @@
                 </p>
             </div>
 
-            <!-- Certificates Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Certificates Grid - Image-Based Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 
-                <!-- Certificate Card 1 -->
-                <div class="certificate-card bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
-                    <!-- Certificate Image -->
-                    <div class="relative h-48 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                        <i class="fas fa-certificate text-6xl text-primary/30 group-hover:scale-110 transition-transform duration-300"></i>
-                        <!-- Replace with actual certificate image -->
-                        <!-- <img src="assets/images/certificate1.jpg" alt="Certificate" class="w-full h-full object-cover"> -->
-                    </div>
-                    
-                    <!-- Certificate Content -->
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">
-                                Web Development
-                            </span>
-                            <span class="text-gray-500 text-sm">
-                                <i class="fas fa-calendar-alt mr-1"></i>2026
-                            </span>
+                <!-- Certificate Card 1 - Computer Literacy -->
+                <div class="certificate-card group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                        <!-- Certificate Image Container -->
+                        <div class="relative aspect-[4/3] overflow-hidden bg-gray-50">
+                            <img src="assets/images/Computer_Literacy_Certificate.jpg" 
+                                 alt="Computer Literacy Certificate" 
+                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <!-- Hover Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                                <a href="assets/images/Computer_Literacy_Certificate.jpg" target="_blank" rel="noopener noreferrer" 
+                                   class="px-5 py-2.5 bg-white/95 text-gray-900 rounded-xl font-semibold text-sm hover:bg-white transition-all duration-300 flex items-center gap-2 shadow-lg">
+                                    <i class="fas fa-expand"></i>
+                                    View Full Size
+                                </a>
+                            </div>
+                            <!-- Status Badge -->
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1.5 bg-secondary/90 backdrop-blur-sm text-white text-xs font-bold rounded-full shadow-lg">
+                                    <i class="fas fa-check-circle mr-1"></i>Verified
+                                </span>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">
-                            Certificate Title Here
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Issued by: Organization Name
-                        </p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-medium text-sm hover:underline group/link">
-                            <i class="fas fa-external-link-alt mr-2 group-hover/link:rotate-12 transition-transform duration-300"></i>
-                            View Certificate
-                        </a>
+                        <!-- Certificate Info -->
+                        <div class="p-5 bg-white">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-semibold rounded-full">
+                                    Computer Literacy
+                                </span>
+                                <span class="text-gray-400 text-sm font-medium">
+                                    <i class="fas fa-calendar-alt mr-1"></i>2019
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-secondary transition-colors duration-300">
+                                Certificate of Completion – Computer Literacy Training
+                            </h3>
+                            <p class="text-gray-500 text-sm">
+                                <i class="fas fa-building mr-1.5 text-gray-400"></i>
+                                Unitech Educational Program Corp. & AICS
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Certificate Card 2 -->
-                <div class="certificate-card bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative h-48 bg-gradient-to-br from-secondary/10 to-accent/10 flex items-center justify-center overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                        <i class="fas fa-certificate text-6xl text-secondary/30 group-hover:scale-110 transition-transform duration-300"></i>
-                    </div>
-                    
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-semibold rounded-full">
-                                Computer Literacy
-                            </span>
-                            <span class="text-gray-500 text-sm">
-                                <i class="fas fa-calendar-alt mr-1"></i>2019
-                            </span>
+                <!-- Certificate Card 2 - NC III Web Dev (Coming Soon) -->
+                <div class="certificate-card group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 border-dashed">
+                        <!-- Placeholder Image Container -->
+                        <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-50 via-primary/5 to-secondary/5 flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-certificate text-3xl text-primary/50"></i>
+                                </div>
+                                <div class="px-4 py-2 bg-amber-100/80 text-amber-700 rounded-full text-sm font-semibold inline-flex items-center">
+                                    <i class="fas fa-clock mr-2"></i>
+                                    In Progress
+                                </div>
+                            </div>
+                            <!-- Decorative Pattern -->
+                            <div class="absolute inset-0 opacity-5">
+                                <div class="absolute top-4 left-4 w-8 h-8 border-2 border-primary rounded-lg"></div>
+                                <div class="absolute bottom-4 right-4 w-12 h-12 border-2 border-secondary rounded-full"></div>
+                                <div class="absolute top-1/2 right-8 w-6 h-6 border-2 border-accent rounded"></div>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-secondary transition-colors duration-300">
-                            Certificate of Completion – Computer Literacy Training Program
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Issued by: Unitech Educational Program Corporation in partnership with
-                            Asian Institute of Computer Studies (AICS)
-                        </p>
-                        <a href="Computer_Literacy_Certificate.jpg" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-secondary font-medium text-sm hover:underline group/link">
-                            <i class="fas fa-external-link-alt mr-2 group-hover/link:rotate-12 transition-transform duration-300"></i>
-                            View Certificate
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Certificate Card 3 -->
-                <div class="certificate-card bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative h-48 bg-gradient-to-br from-accent/10 to-primary/10 flex items-center justify-center overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                        <i class="fas fa-certificate text-6xl text-accent/30 group-hover:scale-110 transition-transform duration-300"></i>
-                    </div>
-                    
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full">
-                                Achievement
-                            </span>
-                            <span class="text-gray-500 text-sm">
-                                <i class="fas fa-calendar-alt mr-1"></i>2024
-                            </span>
+                        <!-- Certificate Info -->
+                        <div class="p-5 bg-white">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">
+                                    Web Development
+                                </span>
+                                <span class="text-gray-400 text-sm font-medium">
+                                    <i class="fas fa-calendar-alt mr-1"></i>2026
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-primary transition-colors duration-300">
+                                NC III – Web Development (TESDA)
+                            </h3>
+                            <p class="text-gray-500 text-sm">
+                                <i class="fas fa-building mr-1.5 text-gray-400"></i>
+                                Technical Education and Skills Development Authority
+                            </p>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent transition-colors duration-300">
-                            Certificate Title Here
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Issued by: Organization Name
-                        </p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent font-medium text-sm hover:underline group/link">
-                            <i class="fas fa-external-link-alt mr-2 group-hover/link:rotate-12 transition-transform duration-300"></i>
-                            View Certificate
-                        </a>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Coming Soon Note -->
-            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="400">
-                <div class="inline-flex items-center px-6 py-3 bg-white/30 backdrop-blur-sm border border-white/30 rounded-xl text-gray-600">
-                    <i class="fas fa-hourglass-half mr-2 text-primary"></i>
-                    <span>More certificates coming soon as I continue my learning journey!</span>
+            <!-- Add More Certificates Note -->
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="300">
+                <div class="inline-flex flex-col sm:flex-row items-center gap-4 px-6 py-4 bg-white/50 backdrop-blur-sm border border-gray-200 rounded-2xl">
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <i class="fas fa-graduation-cap text-primary"></i>
+                        <span class="font-medium">Continuously learning and earning certifications</span>
+                    </div>
+                    <div class="hidden sm:block w-px h-6 bg-gray-300"></div>
+                    <a href="https://github.com/TsmHabib03" target="_blank" rel="noopener noreferrer" 
+                       class="text-primary font-semibold hover:underline flex items-center gap-1">
+                        <i class="fab fa-github"></i>
+                        View My Progress
+                    </a>
                 </div>
             </div>
         </div>
