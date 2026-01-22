@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habib - Web Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-white text-gray-900 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-code text-white text-sm"></i>
+                    </div>
+                    <span class="text-xl font-semibold text-gray-900">Habib <span class="text-primary">Portfolio</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-600 hover:text-primary font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-primary font-medium">About</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-primary font-medium">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-primary font-medium">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="px-3 py-1 bg-green-50 text-secondary text-xs font-medium rounded-full border border-green-100">
+                        <span class="w-2 h-2 bg-secondary rounded-full inline-block mr-2"></span>
+                        Available
+                    </div>
+                    <button id="mobile-menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu -->
+                <div id="mobile-menu" class="mobile-menu">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen bg-white flex items-center justify-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="px-3 py-1 bg-orange-50 text-accent text-xs font-medium rounded-full border border-orange-100">
+                            Software Developer
+                        </div>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
+                        I'm <span class="text-primary">Habib</span>,<br>
+                       Designing and building digital solutions.
+                    </h1>
+                    <p class="text-gray-600 text-lg mb-8 max-w-2xl leading-relaxed">
+                        Hi, I’m a Grade 12 student aspiring to become a software developer. I love creating digital solutions that make life easier. Let’s build something amazing together.
+                    </p>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <button class="btn-primary hover-scale">
+                            <i class="fas fa-download mr-2"></i>
+                            Download CV
+                        </button>
+                        <button class="btn-secondary hover-scale">
+                            <i class="fas fa-eye mr-2"></i>
+                            View Portfolio
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Profile Image - Centered -->
+                <div class="lg:col-span-4 order-1 lg:order-2 flex justify-center my-8 lg:my-0">
+                    <div class="relative">
+                        <!-- Main Profile Container - Reduced Size -->
+                        <div class="relative w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px]">
+                            <!-- Circular Profile Image Container -->
+                            <div class="relative w-full h-full">
+                                <!-- Background Circle with Gradient -->
+                                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/10 via-white to-secondary/10 p-3 shadow-2xl">
+                                    <!-- Inner Circle with Image -->
+                                    <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg">
+                                        <!-- Background Mask for Better Integration -->
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-white/20 z-10"></div>
+                                        
+                                        <!-- Profile Image -->
+                                        <img src="assets/images/Habibprofile.jpg" 
+                                             alt="Habib" 
+                                             class="w-full h-full object-cover object-center scale-110 transform relative z-0">
+                                        
+                                        <!-- Subtle Vignette Effect -->
+                                        <div class="absolute inset-0 bg-gradient-to-tr from-black/5 via-transparent to-transparent z-5"></div>
+                                    </div>
+                                    
+                                    <!-- Professional Border Ring -->
+                                    <div class="absolute inset-2 rounded-full border-2 border-primary/30"></div>
+                                    <div class="absolute inset-4 rounded-full border border-secondary/20"></div>
+                                </div>
+                                
+                                <!-- Outer Glow Effect -->
+                                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/5 to-secondary/5 blur-3xl -z-10 scale-110"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Tech Icons - Repositioned -->
+                        <div class="absolute -top-2 -right-8 w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg float-animation z-30">
+                            <i class="fas fa-code text-white text-sm"></i>
+                        </div>
+                        <div class="absolute -bottom-2 -left-8 w-12 h-12 bg-secondary rounded-xl flex items-center justify-center shadow-lg float-animation z-30" style="animation-delay: -1.5s;">
+                            <i class="fas fa-laptop text-white text-sm"></i>
+                        </div>
+                        
+                        <!-- Status Badges - Repositioned -->
+                        <div class="absolute top-4 left-4 px-2 py-1 bg-white/95 backdrop-blur-sm text-primary text-xs font-bold rounded-full border border-primary/30 shadow-md z-30">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                <span>Portfolio</span>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute top-4 right-4 px-2 py-1 bg-secondary/95 backdrop-blur-sm text-white text-xs font-bold rounded-full shadow-md z-30">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
+                                <span>Available</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Decorative Elements - Repositioned -->
+                        <div class="absolute top-1/4 -left-12 w-6 h-6 bg-accent/20 rounded-full blur-sm"></div>
+                        <div class="absolute bottom-1/3 -right-10 w-4 h-4 bg-primary/20 rounded-full blur-sm"></div>
+                    </div>
+                </div>
+                
+                <!-- Right Sidebar - Improved Spacing -->
+                <div class="lg:col-span-3 order-3 space-y-4 mt-8 lg:mt-0">
+                    <!-- Stats Card -->
+                    <div class="card hover-lift p-4 lg:p-6">
+                        <h3 class="text-xs lg:text-sm font-semibold text-gray-500 mb-3 lg:mb-4 tracking-wider uppercase">Experience</h3>
+                        <div class="space-y-3 lg:space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm lg:text-base text-gray-600">Years Active</span>
+                                <span class="text-xl lg:text-2xl font-bold text-primary">2+</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm lg:text-base text-gray-600">Projects Done</span>
+                                <span class="text-xl lg:text-2xl font-bold text-secondary">37</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm lg:text-base text-gray-600">Happy Clients</span>
+                                <span class="text-xl lg:text-2xl font-bold text-accent">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tech Stack -->
+                    <div class="card hover-lift p-4 lg:p-6">
+                        <h3 class="text-xs lg:text-sm font-semibold text-gray-500 mb-3 lg:mb-4 tracking-wider uppercase">Tech Stack</h3>
+                        <div class="flex flex-wrap gap-1.5 lg:gap-2">
+                            <span class="tech-badge badge-primary text-xs">HTML</span>
+                            <span class="tech-badge badge-secondary text-xs">CSS</span>
+                            <span class="tech-badge badge-accent text-xs">JavaScript</span>
+                            <span class="tech-badge badge-primary text-xs">PHP</span>
+                            <span class="tech-badge badge-secondary text-xs">MySQL</span>
+                            <span class="tech-badge badge-accent text-xs">Java</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="card hover-lift p-4 lg:p-6">
+                        <h3 class="text-xs lg:text-sm font-semibold text-gray-500 mb-3 lg:mb-4 tracking-wider uppercase">Connect</h3>
+                        <div class="flex flex-wrap gap-2 lg:gap-3">
+                            <a href="https://github.com/TsmHabib03" target="_blank" rel="noopener noreferrer" class="w-8 h-8 lg:w-10 lg:h-10 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary transition-all duration-300">
+                                <i class="fab fa-github text-sm"></i>
+                            </a>
+                            <a href="https://www.facebook.com/share/16sbZWKoU5/?mibextid=qi2Omg" target="_blank" rel="noopener noreferrer" class="w-8 h-8 lg:w-10 lg:h-10 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary transition-all duration-300">
+                                <i class="fab fa-facebook text-sm"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@tsmhabib03?_t=ZS-8yESSirCSDC&_r=1" target="_blank" rel="noopener noreferrer" class="w-8 h-8 lg:w-10 lg:h-10 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary transition-all duration-300">
+                                <i class="fab fa-tiktok text-sm"></i>
+                            </a>
+                            <a href="https://www.instagram.com/tsmhabib03?igsh=MWFoaTBnOXcxZ3dqdg==" target="_blank" rel="noopener noreferrer" class="w-8 h-8 lg:w-10 lg:h-10 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary transition-all duration-300">
+                                <i class="fab fa-instagram text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/20 relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 left-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-accent/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 about-header" data-aos="fade-up">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <div class="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-primary text-sm font-medium rounded-full shadow-lg">
+                        <i class="fas fa-user mr-2"></i>About Me
+                    </div>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 relative">
+                    Get to Know Me Better
+                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Discover my journey, skills, and passion for creating digital solutions that make a difference
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Profile Image Section -->
+                <div class="order-2 lg:order-1 flex justify-center" data-aos="fade-right" data-aos-delay="200">
+                    <div class="relative">
+                        <!-- Main Profile Container -->
+                        <div class="relative w-[400px] h-[500px] lg:w-[450px] lg:h-[550px]">
+                            <!-- Glassmorphism Card -->
+                            <div class="absolute inset-0 bg-white/20 backdrop-blur-md border border-white/30 rounded-3xl shadow-2xl p-6">
+                                <!-- Profile Image -->
+                                <div class="relative w-full h-4/5 rounded-2xl overflow-hidden">
+                                    <img src="assets/images/Habibprofile.jpg" 
+                                         alt="Habib Profile" 
+                                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                                    
+                                    <!-- Image Overlay -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                                    
+                                    <!-- Status Badge -->
+                                    <div class="absolute top-4 right-4">
+                                        <div class="px-3 py-1 bg-secondary/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full border border-white/20 shadow-lg">
+                                            <i class="fas fa-circle mr-1 text-xs animate-pulse"></i>
+                                            Available for Work
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Profile Info -->
+                                <div class="mt-4 text-center">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">Habib</h3>
+                                    <p class="text-gray-600 text-sm">Aspiring Software Developer</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating Elements -->
+                            <div class="absolute -top-4 -right-4 w-16 h-16 bg-primary/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg float-animation">
+                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                            </div>
+                            <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-accent/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg float-animation" style="animation-delay: -1s;">
+                                <i class="fas fa-code text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- About Content Section -->
+                <div class="order-1 lg:order-2 space-y-8" data-aos="fade-left" data-aos-delay="400">
+                    <!-- Story Card -->
+                    <div class="bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900 flex items-center">
+                            <i class="fas fa-rocket text-primary mr-3"></i>
+                            My Journey
+                        </h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                         Hi, I’m <span class="font-semibold text-primary">Habib</span>,
+                          a Grade 12 student with a strong interest in <span class="font-semibold text-secondary">
+                            software development</span>. Ever since I was a child, I have been fascinated by technology, especially how cell phone components and processors work. 
+                            I also have a deep interest in <span class="font-semibold text-secondary">Artificial Intelligence</span> 
+                            and its potential to transform the world. Using AI has greatly helped me as a programmer, making it easier to write thousands of lines of code efficiently.
+                             However, I also recognize its downsides, such as the risk of becoming overly reliant on it and not fully understanding the logic behind solutions.
+                        </p>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                           I believe in the power of <span class="font-semibold text-primary">clean code</span>, 
+                           <span class="font-semibold text-secondary">innovative thinking</span>, and <span class="font-semibold text-accent">continuous learning</span>.
+                           Every project I work on is an opportunity to grow and contribute to the tech community, while learning to balance the benefits and limitations of AI in my development journey.
+                        </p>
+                        
+                        <!-- Skills Highlight -->
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">What I'm Passionate About:</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-check-circle text-secondary"></i>
+                                    <span class="text-gray-700">Web Development</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-check-circle text-secondary"></i>
+                                    <span class="text-gray-700">Problem Solving</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-check-circle text-secondary"></i>
+                                    <span class="text-gray-700">Learning New Technologies</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-check-circle text-secondary"></i>
+                                    <span class="text-gray-700">Creating User-Friendly Apps</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#contact" class="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl text-center group">
+                                <i class="fas fa-envelope mr-2 group-hover:rotate-12 transition-transform duration-300"></i>
+                                Contact Me
+                            </a>
+                            <button class="px-6 py-3 bg-white/30 backdrop-blur-sm border border-white/40 text-gray-900 rounded-xl font-semibold hover:bg-white/40 transition-all duration-300 shadow-lg hover:shadow-xl group">
+                                <i class="fas fa-download mr-2 group-hover:translate-y-1 transition-transform duration-300"></i>
+                                Download CV
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-white/30 backdrop-blur-sm border border-white/30 rounded-xl p-4 text-center hover:bg-white/40 transition-all duration-300 group">
+                            <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-calendar text-primary"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-primary mb-1">2+</h4>
+                            <p class="text-xs text-gray-600 font-medium">Years Learning</p>
+                        </div>
+                        
+                        <div class="bg-white/30 backdrop-blur-sm border border-white/30 rounded-xl p-4 text-center hover:bg-white/40 transition-all duration-300 group">
+                            <div class="w-10 h-10 bg-secondary/20 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-project-diagram text-secondary"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-secondary mb-1">30+</h4>
+                            <p class="text-xs text-gray-600 font-medium">Projects Built</p>
+                        </div>
+                        
+                        <div class="bg-white/30 backdrop-blur-sm border border-white/30 rounded-xl p-4 text-center hover:bg-white/40 transition-all duration-300 group">
+                            <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-code text-accent"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-accent mb-1">6+</h4>
+                            <p class="text-xs text-gray-600 font-medium">Programming Languages</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Info Section -->
+            <div class="mt-20 text-center" data-aos="fade-up" data-aos-delay="600">
+                <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-8 max-w-4xl mx-auto shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">My Goals & Vision</h3>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        As I prepare to transition from high school to university, my goal is to pursue a degree in 
+                        <span class="font-semibold text-primary">Computer Science</span> while continuing to build real-world projects. 
+                        I envision myself contributing to <span class="font-semibold text-secondary">innovative tech solutions</span> 
+                        that can positively impact communities and businesses.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span class="px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full border border-primary/20">
+                            Future CS Student
+                        </span>
+                        <span class="px-4 py-2 bg-secondary/10 text-secondary text-sm font-semibold rounded-full border border-secondary/20">
+                            Open Source Contributor
+                        </span>
+                        <span class="px-4 py-2 bg-accent/10 text-accent text-sm font-semibold rounded-full border border-accent/20">
+                            Problem Solver
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 project-header">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <div class="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-primary text-sm font-medium rounded-full shadow-lg">
+                        <i class="fas fa-rocket mr-2"></i>My Work
+                    </div>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 relative">
+                    Pinned Projects
+                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                   Displaying my latest school and practice projects that highlight my progress and enthusiasm for programming and development.
+                </p>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 projects-grid">
+                <!-- Project Card 1 - Learning Management System -->
+                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="100">
+                    <!-- Project Image -->
+                    <div class="relative h-56 rounded-t-2xl overflow-hidden">
+                        <!-- Teaser Image -->
+                        <img src="assets/images/weatherApp.png" 
+                             alt="Learning Management System Screenshot" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        
+                        <!-- Image Overlay for Glassmorphism -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                        
+                        <!-- Status Badge - Top Left -->
+                        <div class="absolute top-4 left-4 z-20">
+                            <div class="status-badge status-working">
+                                <i class="fas fa-check-circle mr-1"></i>
+                                Fully Working
+                            </div>
+                        </div>
+                        
+                        <!-- Tech Icons - Bottom Right -->
+                        <div class="absolute bottom-4 right-4 flex space-x-2 z-20">
+                            <div class="tech-icon-small">
+                                <i class="fab fa-html5 text-orange-500"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                               <i class="fab fa-css3-alt text-blue-500"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                                <i class="fab fa-js-square text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Content -->
+                    <div class="p-6 relative bg-white/40 backdrop-blur-sm rounded-b-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
+                            Weather App
+                        </h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-sm">
+                            This Weather App displays real-time weather information for any city using data from a weather API. Built with HTML, CSS, and JavaScript, it fetches data using an API key to show temperature, weather conditions, and icons in a clean, responsive user interface. Designed for simplicity and quick access to weather updates on any device.
+                        </p>
+                        
+                        <!-- Project Buttons -->
+                        <div class="flex space-x-3">
+                            <a href="#" class="project-btn project-btn-primary group/btn">
+                                <i class="fas fa-external-link-alt mr-2 group-hover/btn:rotate-12 transition-transform duration-300"></i>
+                                View Project
+                            </a>
+                            <a href="#" class="project-btn project-btn-secondary group/btn">
+                                <i class="fab fa-github mr-2 group-hover/btn:scale-110 transition-transform duration-300"></i>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 - Task Management App -->
+                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Project Image -->
+                    <div class="relative h-56 rounded-t-2xl overflow-hidden">
+                        <!-- Teaser Image -->
+                        <img src="assets/images/LearnFlow.png" 
+                             alt="Learning Management System Screenshot" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        
+                        <!-- Image Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                        
+                        <!-- Status Badge - Top Left -->
+                        <div class="absolute top-4 left-4 z-20">
+                            <div class="status-badge status-progress">
+                                <i class="fas fa-clock mr-1"></i>
+                                In Progress
+                            </div>
+                        </div>
+                        
+                        <!-- Tech Icons - Bottom Right -->
+                        <div class="absolute bottom-4 right-4 flex space-x-2 z-20">
+                            <div class="tech-icon-small">
+                                <i class="fab fa-php text-purple-600"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                                 <i class="fas fa-database text-blue-600"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                                <i class="fab fa-js-square text-yellow-400"></i>
+                            </div>
+                             <div class="tech-icon-small">
+                                <i class="fab fa-html5 text-orange-500"></i>
+                            </div>
+                             <div class="tech-icon-small">
+                                <i class="fab fa-css3-alt text-blue-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Content -->
+                    <div class="p-6 relative bg-white/40 backdrop-blur-sm rounded-b-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-secondary transition-colors duration-300">
+                            Learning Management System LearnFlow
+                        </h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-sm">
+                            LearnFlow is a modern and intuitive LMS for students, teachers, and professionals to learn efficiently and conveniently. It offers a clean platform to access materials, track progress, and enhance knowledge anytime. Currently 90% complete, it already delivers a functional and seamless learning experience.
+
+
+                        </p>
+                        
+                        <!-- Project Buttons -->
+                        <div class="flex space-x-3">
+                            <a href="#" class="project-btn project-btn-primary group/btn">
+                                <i class="fas fa-external-link-alt mr-2 group-hover/btn:rotate-12 transition-transform duration-300"></i>
+                                View Project
+                            </a>
+                            <a href="#" class="project-btn project-btn-secondary group/btn">
+                                <i class="fab fa-github mr-2 group-hover/btn:scale-110 transition-transform duration-300"></i>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 - Student Calculator Website -->
+                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="300">
+                    <!-- Project Image -->
+                    <div class="relative h-56 rounded-t-2xl overflow-hidden">
+                        <!-- Teaser Image -->
+                        <img src="assets/images/Student_Calculator.png" 
+                             alt="Student Calculator Screenshot" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        
+                        <!-- Image Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                        
+                        <!-- Status Badge - Top Left -->
+                        <div class="absolute top-4 left-4 z-20">
+                            <div class="status-badge status-working">
+                                <i class="fas fa-check-circle mr-1"></i>
+                                Fully Working
+                            </div>
+                        </div>
+                        
+                        <!-- Tech Icons - Bottom Right -->
+                        <div class="absolute bottom-4 right-4 flex space-x-2 z-20">
+                            <div class="tech-icon-small">
+                                <i class="fab fa-html5 text-orange-500"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                                <i class="fab fa-css3-alt text-blue-500"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                                <i class="fab fa-js-square text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Content -->
+                    <div class="p-6 relative bg-white/40 backdrop-blur-sm rounded-b-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-accent transition-colors duration-300">
+                            Student Calculator
+                        </h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-sm">
+                           Student Grade Calculator is a web-based tool designed to help students and teachers easily compute grades based on the DepEd transmutation table and grading system. This calculator automatically converts raw scores to transmuted grades following the official Department of Education guidelines to ensure accuracy and consistency in grading.
+                        </p>
+                        
+                        <!-- Project Buttons -->
+                        <div class="flex space-x-3">
+                            <a href="#" class="project-btn project-btn-primary group/btn">
+                                <i class="fas fa-external-link-alt mr-2 group-hover/btn:rotate-12 transition-transform duration-300"></i>
+                                View Project
+                            </a>
+                            <a href="#" class="project-btn project-btn-secondary group/btn">
+                                <i class="fab fa-github mr-2 group-hover/btn:scale-110 transition-transform duration-300"></i>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 - Inventory System -->
+                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="400">
+                    <!-- Project Image -->
+                    <div class="relative h-56 rounded-t-2xl overflow-hidden">
+                        <!-- Teaser Image -->
+                        <img src="assets/images/Fortran_Pie.png" 
+                             alt="Fortran_Pie Screenshot" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        
+                        <!-- Image Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                        
+                        <!-- Status Badge - Top Left -->
+                        <div class="absolute top-4 left-4 z-20">
+                            <div class="status-badge status-progress">
+                                <i class="fas fa-clock mr-1"></i>
+                                In Progress
+                            </div>
+                        </div>
+                        
+                        <!-- Tech Icons - Bottom Right -->
+                        <div class="absolute bottom-4 right-4 flex space-x-2 z-20">
+                            <div class="tech-icon-small">
+                               <!--<i class="fab fa-java text-primary"></i> --> 
+                               <i class="fab fa-js-square text-yellow-400"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                                <i class="fab fa-html5 text-orange-500"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                                <i class="fab fa-css3-alt text-blue-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Content -->
+                    <div class="p-6 relative bg-white/40 backdrop-blur-sm rounded-b-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
+                            Fortran Pie 
+                        </h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-sm">
+                            Fortran Pie is a modern and appetizing pizza website landing page designed to showcase the brand’s best pizzas and drive customer orders. The design features a warm, inviting color palette with high-quality pizza images, creating an irresistible visual experience for visitors.
+                        </p>
+                        
+                        <!-- Project Buttons -->
+                       <div class="flex space-x-3">
+                            <a href="#" class="project-btn project-btn-primary group/btn">
+                                <i class="fas fa-external-link-alt mr-2 group-hover/btn:rotate-12 transition-transform duration-300"></i>
+                                View Project
+                            </a>
+                            <a href="#" class="project-btn project-btn-secondary group/btn">
+                                <i class="fab fa-github mr-2 group-hover/btn:scale-110 transition-transform duration-300"></i>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 - Scientific Calculator -->
+                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="500">
+                    <!-- Project Image -->
+                    <div class="relative h-56 rounded-t-2xl overflow-hidden">
+                        <!-- Teaser Image -->
+                        <img src="assets/images/Java_Alarm_Clock.jpg" 
+                             alt="Scientific Calculator Screenshot" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        
+                        <!-- Image Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                        
+                        <!-- Status Badge - Top Left -->
+                        <div class="absolute top-4 left-4 z-20">
+                            <div class="status-badge status-working">
+                                <i class="fas fa-check-circle mr-1"></i>
+                                Fully Working
+                            </div>
+                        </div>
+                        
+                        <!-- Tech Icons - Bottom Right -->
+                        <div class="absolute bottom-4 right-4 flex space-x-2 z-20">
+                            <div class="tech-icon-small">
+                                <i class="fab fa-java text-red-600"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                                <i class="fas fa-desktop text-gray-600"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <!-- Project Content -->
+                    <div class="p-6 relative bg-white/40 backdrop-blur-sm rounded-b-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-secondary transition-colors duration-300">
+                            Java Alarm Clock
+                        </h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-sm">
+                            A basic command-line alarm clock made in Java. Users can set an alarm time, and the program alerts them when the time is reached. Built without any GUI, following Bro Code’s tutorial.
+                        </p>
+                        
+                        <!-- Project Buttons -->
+                        <div class="flex space-x-3">
+                            <a href="#" class="project-btn project-btn-primary group/btn">
+                                <i class="fas fa-external-link-alt mr-2 group-hover/btn:rotate-12 transition-transform duration-300"></i>
+                                View Project
+                            </a>
+                            <a href="#" class="project-btn project-btn-secondary group/btn">
+                                <i class="fab fa-github mr-2 group-hover/btn:scale-110 transition-transform duration-300"></i>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 - 2D Puzzle Game -->
+                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="600">
+                    <!-- Project Image -->
+                    <div class="relative h-56 rounded-t-2xl overflow-hidden">
+                        <!-- Teaser Image -->
+                        <img src="assets/images/Juke_box.jpg" 
+                             alt="2D Puzzle Game Screenshot" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        
+                        <!-- Image Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                        
+                        <!-- Status Badge - Top Left -->
+                        <div class="absolute top-4 left-4 z-20">
+                            <div class="status-badge status-progress">
+                                <i class="fas fa-check-circle mr-1"></i>
+                                Fully Working
+                            </div>
+                        </div>
+                        
+                        <!-- Tech Icons - Bottom Right -->
+                        <div class="absolute bottom-4 right-4 flex space-x-2 z-20">
+                            <div class="tech-icon-small">
+                                <i class="fab fa-java text-red-600"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                                <i class="fas fa-desktop text-gray-600"></i>
+                            </div>
+                            <div class="tech-icon-small">
+                                <i class="fas fa-gamepad text-purple-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Content -->
+                    <div class="p-6 relative bg-white/40 backdrop-blur-sm rounded-b-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-accent transition-colors duration-300">
+                            Java Music Player
+                        </h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-sm">
+                            This is a simple Java Music Player I built while learning from Bro Code tutorials. It helped me understand Java file handling, audio playback, and basic project structuring. I plan to improve it by adding a GUI in the future.
+                        </p>
+                        
+                        <!-- Project Buttons -->
+                        <div class="flex space-x-3">
+                            <a href="#" class="project-btn project-btn-primary group/btn">
+                                <i class="fas fa-external-link-alt mr-2 group-hover/btn:rotate-12 transition-transform duration-300"></i>
+                                View Project
+                            </a>
+                            <a href="#" class="project-btn project-btn-secondary group/btn">
+                                <i class="fab fa-github mr-2 group-hover/btn:scale-110 transition-transform duration-300"></i>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Projects Button -->
+            <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="700">
+                <a href="https://github.com/TsmHabib03" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-gray-900 rounded-2xl font-semibold hover:bg-white/30 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl group">
+                    <i class="fab fa-github mr-3 text-xl group-hover:rotate-12 transition-transform duration-300"></i>
+                    View All Projects on GitHub
+                    <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/20 relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-20 left-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-accent/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 contact-header" data-aos="fade-up">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <div class="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-primary text-sm font-medium rounded-full shadow-lg">
+                        <i class="fas fa-envelope mr-2"></i>Contact Me
+                    </div>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 relative">
+                    Let's Work Together
+                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Ready to start your next project? Get in touch and let's create something amazing together
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <!-- Contact Info Section -->
+                <div class="order-2 lg:order-1 space-y-8" data-aos="fade-right" data-aos-delay="200">
+                    <!-- Main Contact Card -->
+                    <div class="bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900 flex items-center">
+                            <i class="fas fa-paper-plane text-primary mr-3"></i>
+                            Get In Touch
+                        </h3>
+                        <p class="text-gray-700 mb-8 leading-relaxed">
+                            I'm always excited to discuss new opportunities, collaborate on interesting projects, or simply chat about technology and development. Feel free to reach out!
+                        </p>
+                        
+                        <!-- Contact Details -->
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4 p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/30 transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-envelope text-primary text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-900">Email</p>
+                                    <a href="mailto:jaudianhabib879@gmail.com" class="text-gray-600 hover:text-primary transition-colors duration-300">
+                                        jaudianhabib879@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4 p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/30 transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-phone text-secondary text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-900">Phone</p>
+                                    <a href="tel:+639997670753" class="text-gray-600 hover:text-secondary transition-colors duration-300">
+                                        +639997670753
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4 p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/30 transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-map-marker-alt text-accent text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-900">Location</p>
+                                    <p class="text-gray-600">Philippines</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media Card -->
+                    <div class="bg-white/30 backdrop-blur-sm border border-white/30 rounded-2xl p-6 shadow-lg">
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                            <i class="fas fa-share-alt text-primary mr-2"></i>
+                            Follow Me
+                        </h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/TsmHabib03" target="_blank" rel="noopener noreferrer" 
+                               class="w-12 h-12 bg-gray-900/80 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center text-white hover:bg-gray-800 hover:scale-110 transition-all duration-300 group">
+                                <i class="fab fa-github group-hover:rotate-12 transition-transform duration-300"></i>
+                            </a>
+                            <a href="https://www.facebook.com/share/16sbZWKoU5/?mibextid=qi2Omg" target="_blank" rel="noopener noreferrer" 
+                               class="w-12 h-12 bg-blue-600/80 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center text-white hover:bg-blue-700 hover:scale-110 transition-all duration-300 group">
+                                <i class="fab fa-facebook group-hover:rotate-12 transition-transform duration-300"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@tsmhabib03?_t=ZS-8yESSirCSDC&_r=1" target="_blank" rel="noopener noreferrer" 
+                               class="w-12 h-12 bg-black/80 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center text-white hover:bg-gray-900 hover:scale-110 transition-all duration-300 group">
+                                <i class="fab fa-tiktok group-hover:rotate-12 transition-transform duration-300"></i>
+                            </a>
+                            <a href="https://www.instagram.com/tsmhabib03?igsh=MWFoaTBnOXcxZ3dqdg==" target="_blank" rel="noopener noreferrer" 
+                               class="w-12 h-12 bg-gradient-to-br from-purple-600/80 to-pink-600/80 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center text-white hover:scale-110 transition-all duration-300 group">
+                                <i class="fab fa-instagram group-hover:rotate-12 transition-transform duration-300"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Response Promise -->
+                    <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-4 text-center">
+                        <div class="flex items-center justify-center space-x-2 text-secondary">
+                            <i class="fas fa-clock"></i>
+                            <span class="text-sm font-medium">Usually responds within 24 hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form Section -->
+                <div class="order-1 lg:order-2" data-aos="fade-left" data-aos-delay="400">
+                    <div class="bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Send a Message</h3>
+                            <p class="text-gray-600">Fill out the form below and I'll get back to you as soon as possible.</p>
+                        </div>
+
+                        <form class="space-y-6" id="contact-form">
+                            <!-- Name Fields -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="form-group">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                        <i class="fas fa-user text-primary mr-2"></i>First Name
+                                    </label>
+                                    <input type="text" name="firstName" required
+                                           class="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 placeholder-gray-500"
+                                           placeholder="Enter your first name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                        <i class="fas fa-user text-primary mr-2"></i>Last Name
+                                    </label>
+                                    <input type="text" name="lastName" required
+                                           class="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 placeholder-gray-500"
+                                           placeholder="Enter your last name">
+                                </div>
+                            </div>
+                            
+                            <!-- Email Field -->
+                            <div class="form-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-envelope text-secondary mr-2"></i>Email Address
+                                </label>
+                                <input type="email" name="email" required
+                                       class="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all duration-300 placeholder-gray-500"
+                                       placeholder="your.email@example.com">
+                            </div>
+                            
+                            <!-- Subject Field -->
+                            <div class="form-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-tag text-accent mr-2"></i>Subject
+                                </label>
+                                <select name="subject" required
+                                        class="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300">
+                                    <option value="">Select a subject</option>
+                                    <option value="project">Project Collaboration</option>
+                                    <option value="job">Job Opportunity</option>
+                                    <option value="freelance">Freelance Work</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Message Field -->
+                            <div class="form-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-comment text-primary mr-2"></i>Message
+                                </label>
+                                <textarea name="message" rows="6" required
+                                          class="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 placeholder-gray-500 resize-none"
+                                          placeholder="Tell me about your project, ideas, or how we can work together..."></textarea>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <div class="pt-4">
+                                <button type="submit" 
+                                        class="w-full px-8 py-4 bg-primary text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                                    <span class="relative flex items-center justify-center">
+                                        <i class="fas fa-paper-plane mr-2 group-hover:rotate-12 transition-transform duration-300"></i>
+                                        Send Message
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Success Message (Hidden by default) -->
+                        <div id="success-message" class="hidden mt-6 p-4 bg-secondary/20 border border-secondary/30 rounded-xl text-secondary text-center">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            Message sent successfully! I'll get back to you soon.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="mt-20 text-center" data-aos="fade-up" data-aos-delay="600">
+                <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-8 max-w-3xl mx-auto shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Let's Build Something Great Together</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        Whether you have a specific project in mind or just want to explore possibilities, 
+                        I'm here to help bring your ideas to life with clean code and innovative solutions.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span class="px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full border border-primary/20">
+                            <i class="fas fa-handshake mr-2"></i>Collaborative
+                        </span>
+                        <span class="px-4 py-2 bg-secondary/10 text-secondary text-sm font-semibold rounded-full border border-secondary/20">
+                            <i class="fas fa-lightbulb mr-2"></i>Creative
+                        </span>
+                        <span class="px-4 py-2 bg-accent/10 text-accent text-sm font-semibold rounded-full border border-accent/20">
+                            <i class="fas fa-rocket mr-2"></i>Results-Driven
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-code text-white text-sm"></i>
+                    </div>
+                    <span class="text-xl font-semibold text-gray-900">Habib Portfolio</span>
+                </div>
+                <p class="text-gray-600 mb-4">Building digital solutions with passion and precision</p>
+                <p class="text-sm text-gray-500">&copy; 2025 Habib. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

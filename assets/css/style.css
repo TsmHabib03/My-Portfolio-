@@ -1,0 +1,1842 @@
+/* ===================
+   RESET & BASE STYLES
+   =================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #111111;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* ===================
+   VARIABLES - BantayBaha Theme
+   =================== */
+:root {
+    --primary: #0070f3;
+    --primary-hover: #0056b3;
+    --secondary: #00b383;
+    --secondary-hover: #009268;
+    --accent: #f5a623;
+    --accent-hover: #e6950c;
+    --text-primary: #111111;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-card: #ffffff;
+    --border: #e5e7eb;
+    --border-light: #f3f4f6;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+    --radius: 12px;
+    --radius-lg: 16px;
+}
+
+/* ===================
+   CUSTOM TAILWIND COLORS
+   =================== */
+.text-primary { color: var(--primary) !important; }
+.bg-primary { background-color: var(--primary) !important; }
+.border-primary { border-color: var(--primary) !important; }
+
+.text-secondary { color: var(--secondary) !important; }
+.bg-secondary { background-color: var(--secondary) !important; }
+
+.text-accent { color: var(--accent) !important; }
+.bg-accent { background-color: var(--accent) !important; }
+
+/* ===================
+   NAVIGATION STYLES
+   =================== */
+.nav-link {
+    position: relative;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--primary) !important;
+}
+
+/* ===================
+   BUTTON STYLES
+   =================== */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 22px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+}
+
+/* ===================
+   FORM STYLES
+   =================== */
+.form-input {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: var(--transition);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.1);
+}
+
+.form-input::placeholder {
+    color: var(--text-muted);
+}
+
+/* ===================
+   CARD STYLES
+   =================== */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ===================
+   STATUS BADGES
+   =================== */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid;
+}
+
+.badge-primary {
+    background: rgba(0, 112, 243, 0.1);
+    color: var(--primary);
+    border-color: rgba(0, 112, 243, 0.2);
+}
+
+.badge-secondary {
+    background: rgba(0, 179, 131, 0.1);
+    color: var(--secondary);
+    border-color: rgba(0, 179, 131, 0.2);
+}
+
+.badge-accent {
+    background: rgba(245, 166, 35, 0.1);
+    color: var(--accent);
+    border-color: rgba(245, 166, 35, 0.2);
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* ===================
+   PROJECT STATUS BADGES
+   =================== */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.status-working {
+    background: rgba(34, 197, 94, 0.9);
+    color: white;
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.status-progress {
+    background: rgba(245, 166, 35, 0.9);
+    color: white;
+    border-color: rgba(245, 166, 35, 0.3);
+}
+
+.status-development {
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Status badge hover effects */
+.status-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================
+   TECH STACK BADGES
+   =================== */
+.tech-badge {
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===================
+   SOCIAL ICONS
+   =================== */
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-secondary);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ===================
+   MOBILE MENU
+   =================== */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    padding: 16px;
+    box-shadow: var(--shadow-lg);
+    z-index: 50;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 12px 0;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-light);
+    transition: var(--transition);
+}
+
+.mobile-menu a:hover {
+    color: var(--primary);
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+/* ===================
+   ANIMATIONS
+   =================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-8px) rotate(1deg); }
+    66% { transform: translateY(-4px) rotate(-0.5deg); }
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.float-animation {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* ===================
+   HOVER EFFECTS
+   =================== */
+.hover-scale {
+    transition: var(--transition);
+}
+
+.hover-scale:hover {
+    transform: translateY(-2px);
+}
+
+.hover-lift {
+    transition: var(--transition);
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ===================
+   EMERGENCY ALERT STYLES
+   =================== */
+.alert {
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    border: 1px solid;
+    font-weight: 500;
+}
+
+.alert-info {
+    background: rgba(0, 112, 243, 0.1);
+    color: var(--primary);
+    border-color: rgba(0, 112, 243, 0.2);
+}
+
+.alert-success {
+    background: rgba(0, 179, 131, 0.1);
+    color: var(--secondary);
+    border-color: rgba(0, 179, 131, 0.2);
+}
+
+.alert-warning {
+    background: rgba(245, 166, 35, 0.1);
+    color: var(--accent);
+    border-color: rgba(245, 166, 35, 0.2);
+}
+
+/* ===================
+   PROFILE IMAGE ENHANCEMENTS
+   =================== */
+.profile-container {
+    position: relative;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+}
+
+.profile-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.profile-image-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(0, 112, 243, 0.05) 0%, 
+        transparent 50%, 
+        rgba(0, 179, 131, 0.05) 100%
+    );
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* Enhanced object positioning for better portrait display */
+.profile-image {
+    object-fit: cover;
+    object-position: center top;
+    transition: var(--transition);
+}
+
+.profile-image:hover {
+    transform: scale(1.02);
+}
+
+/* Professional border effect */
+.profile-border {
+    position: absolute;
+    inset: 0;
+    border: 3px solid;
+    border-image: linear-gradient(135deg, var(--primary), var(--secondary)) 1;
+    border-radius: var(--radius-lg);
+    pointer-events: none;
+}
+
+/* Background mask for images with busy backgrounds */
+.bg-mask {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 40%,
+        rgba(255, 255, 255, 0.1) 70%,
+        rgba(255, 255, 255, 0.3) 100%
+    );
+    z-index: 10;
+}
+
+/* Professional badge styling */
+.profile-badge {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================
+   ENHANCED PROFILE IMAGE STYLES
+   =================== */
+.profile-image-container {
+    position: relative;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+}
+
+/* Circular profile image with background masking */
+.circular-profile {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.circular-profile img {
+    transition: transform 0.5s ease;
+    filter: contrast(1.1) brightness(1.05) saturate(1.1);
+}
+
+.circular-profile:hover img {
+    transform: scale(1.05);
+}
+
+/* Enhanced floating animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    25% { 
+        transform: translateY(-8px) rotate(1deg); 
+    }
+    50% { 
+        transform: translateY(-12px) rotate(0deg); 
+    }
+    75% { 
+        transform: translateY(-8px) rotate(-1deg); 
+    }
+}
+
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Professional border effects */
+.profile-border-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 3px solid;
+    border-image: linear-gradient(135deg, var(--primary), var(--secondary)) 1;
+    animation: rotate-border 10s linear infinite;
+}
+
+@keyframes rotate-border {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Soft glow effect for profile container */
+.profile-glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(
+        circle at center,
+        rgba(0, 112, 243, 0.1) 0%,
+        rgba(0, 179, 131, 0.05) 50%,
+        transparent 70%
+    );
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { 
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* Enhanced badge styling */
+.status-badge {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+}
+
+/* Background masking for images with backgrounds */
+.bg-mask-circular {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        transparent 60%,
+        rgba(255, 255, 255, 0.3) 80%,
+        rgba(255, 255, 255, 0.6) 95%
+    );
+    border-radius: 50%;
+    z-index: 15;
+    pointer-events: none;
+}
+
+/* Professional shadow system */
+.profile-shadow-system {
+    filter: 
+        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1))
+        drop-shadow(0 12px 24px rgba(0, 0, 0, 0.1))
+        drop-shadow(0 24px 48px rgba(0, 0, 0, 0.1));
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .profile-image-container {
+        transform: scale(0.9);
+    }
+    
+    .float-animation {
+        animation-duration: 8s;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-image-container {
+        transform: scale(0.8);
+    }
+    
+    .status-badge {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image-container {
+        transform: scale(0.7);
+    }
+    
+    .float-animation {
+        animation: none;
+    }
+}
+
+/* Clean focus styles */
+.profile-image-container:focus-within {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+    border-radius: 50%;
+}
+
+/* Enhanced interactive elements */
+.floating-tech-icon {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.floating-tech-icon:hover {
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Decorative background elements */
+.decorative-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    opacity: 0.1;
+    animation: float-slow 8s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ===================
+   RESPONSIVE DESIGN
+   =================== */
+@media (max-width: 1024px) {
+    .profile-image {
+        width: 450px !important;
+        height: 450px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-image {
+        width: 380px !important;
+        height: 380px !important;
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    .nav-link::after {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image {
+        width: 320px !important;
+        height: 320px !important;
+    }
+    
+    :root {
+        --radius: 8px;
+        --radius-lg: 12px;
+    }
+}
+
+/* ===================
+   UTILITY CLASSES
+   =================== */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.border-gradient {
+    border: 2px solid;
+    border-image: linear-gradient(135deg, var(--primary), var(--secondary)) 1;
+}
+
+/* Clean focus styles for accessibility */
+*:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, textarea, select {
+    transition: var(--transition);
+}
+
+/* ===================
+   LAYOUT FIXES AND IMPROVEMENTS
+   =================== */
+
+/* Enhanced grid spacing */
+.hero-grid {
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .hero-grid {
+        gap: 4rem;
+    }
+}
+
+/* Profile container adjustments */
+.profile-image-container {
+    position: relative;
+    z-index: 10;
+    margin: 2rem 0;
+}
+
+@media (min-width: 1024px) {
+    .profile-image-container {
+        margin: 0;
+    }
+}
+
+/* Floating elements positioning fix */
+.floating-tech-icon {
+    position: absolute;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 20;
+    transition: all 0.3s ease;
+}
+
+.floating-tech-icon:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure floating icons don't overlap content */
+@media (max-width: 1024px) {
+    .floating-tech-icon {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        margin: 0.5rem;
+        display: inline-flex;
+    }
+}
+
+/* Right sidebar responsive improvements */
+.sidebar-card {
+    background: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+    .sidebar-card {
+        padding: 1.5rem;
+    }
+}
+
+.sidebar-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Tech badge responsive sizing */
+.tech-badge {
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+@media (min-width: 1024px) {
+    .tech-badge {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}
+
+/* Social links responsive spacing */
+.social-links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+    .social-links-grid {
+        gap: 0.75rem;
+    }
+}
+
+/* Profile image size adjustments */
+.profile-main-container {
+    width: 350px;
+    height: 350px;
+}
+
+@media (min-width: 1024px) {
+    .profile-main-container {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .profile-main-container {
+        width: 450px;
+        height: 450px;
+    }
+}
+
+/* Status badge improvements */
+.status-badge-small {
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.status-badge-small .indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+/* Enhanced float animation for smaller icons */
+@keyframes float-small {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    25% { 
+        transform: translateY(-4px) rotate(0.5deg); 
+    }
+    50% { 
+        transform: translateY(-6px) rotate(0deg); 
+    }
+    75% { 
+        transform: translateY(-4px) rotate(-0.5deg); 
+    }
+}
+
+.float-animation-small {
+    animation: float-small 4s ease-in-out infinite;
+}
+
+/* Prevent content overflow */
+.content-container {
+    overflow: hidden;
+    position: relative;
+}
+
+/* Z-index management */
+.profile-layer {
+    z-index: 10;
+}
+
+.floating-elements {
+    z-index: 20;
+}
+
+.status-badges {
+    z-index: 30;
+}
+
+.sidebar-content {
+    z-index: 5;
+    position: relative;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+    .profile-main-container {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .floating-tech-icon {
+        width: 10px;
+        height: 10px;
+        font-size: 12px;
+    }
+    
+    .status-badge-small {
+        font-size: 8px;
+        padding: 2px 6px;
+    }
+    
+    .sidebar-card {
+        margin: 1rem 0;
+    }
+    
+    .tech-badge {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+    
+    /* Stack floating icons horizontally on mobile */
+    .floating-icons-mobile {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+/* ===================
+   PROJECTS SECTION STYLES
+   =================== */
+
+/* Project cards */
+.project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+/* Project image containers */
+.project-image {
+    height: 12rem;
+    background: linear-gradient(135deg, var(--primary)/10, var(--secondary)/10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-icon {
+    width: 4rem;
+    height: 4rem;
+    background: var(--primary)/20;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+/* Project status badges */
+.project-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    color: white;
+}
+
+.status-complete {
+    background: var(--secondary);
+}
+
+.status-progress {
+    background: var(--accent);
+}
+
+.status-planning {
+    background: var(--primary);
+}
+
+/* Tech stack tags */
+.tech-tag {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    display: inline-block;
+}
+
+.tech-tag-primary {
+    background: rgba(0, 112, 243, 0.1);
+    color: var(--primary);
+}
+
+.tech-tag-secondary {
+    background: rgba(0, 179, 131, 0.1);
+    color: var(--secondary);
+}
+
+.tech-tag-accent {
+    background: rgba(245, 166, 35, 0.1);
+    color: var(--accent);
+}
+
+/* Project buttons */
+.project-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.project-btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.project-btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.project-btn-secondary {
+    background: transparent;
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+}
+
+.project-btn-secondary:hover {
+    background: var(--secondary);
+    color: white;
+}
+
+.project-btn-disabled {
+    background: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.project-btn-disabled:hover {
+    transform: none;
+}
+
+/* ===================
+   MODERN PROJECTS SECTION STYLES
+   =================== */
+
+/* Glassmorphism base styles */
+.glass-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Project card hover effects */
+.project-card {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.project-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 8px 32px rgba(0, 112, 243, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-color: rgba(0, 112, 243, 0.3);
+}
+
+/* Modern tech badges */
+.tech-badge {
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.tech-badge-primary {
+    background: rgba(0, 112, 243, 0.2);
+    color: #0070f3;
+    border-color: rgba(0, 112, 243, 0.3);
+}
+
+.tech-badge-secondary {
+    background: rgba(0, 179, 131, 0.2);
+    color: #00b383;
+    border-color: rgba(0, 179, 131, 0.3);
+}
+
+.tech-badge-accent {
+    background: rgba(245, 166, 35, 0.2);
+    color: #f5a623;
+    border-color: rgba(245, 166, 35, 0.3);
+}
+
+.tech-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Modern project buttons */
+.project-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.project-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-btn:hover::before {
+    opacity: 1;
+}
+
+.project-btn-primary {
+    background: rgba(0, 112, 243, 0.9);
+    color: white;
+    border-color: rgba(0, 112, 243, 0.3);
+}
+
+.project-btn-primary:hover {
+    background: #0070f3;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 112, 243, 0.25);
+}
+
+.project-btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #00b383;
+    border-color: rgba(0, 179, 131, 0.3);
+}
+
+.project-btn-secondary:hover {
+    background: rgba(0, 179, 131, 0.9);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 179, 131, 0.25);
+}
+
+.project-btn-disabled {
+    background: rgba(156, 163, 175, 0.3);
+    color: #9ca3af;
+    cursor: not-allowed;
+    border-color: rgba(156, 163, 175, 0.3);
+}
+
+.project-btn-disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* ===================
+   RESPONSIVE ENHANCEMENTS
+   =================== */
+
+@media (max-width: 768px) {
+    .status-badge {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+    
+    .tech-icon-small {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-8px) scale(1.01);
+    }
+    
+    .project-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card .relative {
+        height: 200px;
+    }
+    
+    .status-badge {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+    
+    .tech-icon-small {
+        width: 20px;
+        height: 20px;
+        font-size: 9px;
+    }
+}
+
+/* ===================
+   ANIMATION IMPROVEMENTS
+   =================== */
+
+/* Enhanced card reveal animation */
+@keyframes revealCard {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Image zoom animation */
+@keyframes imageZoom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+.project-card:hover img {
+    animation: imageZoom 0.5s ease-out forwards;
+}
+
+/* Status badge pulse animation */
+@keyframes statusPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.status-working {
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* ===================
+   ENHANCED ABOUT SECTION STYLES
+   =================== */
+
+/* About header animations */
+.about-header {
+    opacity: 0;
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+/* Profile image container enhancements */
+.about-profile-container {
+    position: relative;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+}
+
+.about-profile-container:hover {
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15));
+}
+
+/* Enhanced glassmorphism for about cards */
+.about-glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.about-glass-card:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-8px);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Skills highlight styling */
+.skills-grid {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(4px);
+}
+
+/* Enhanced floating animations */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    25% { 
+        transform: translateY(-8px) rotate(1deg); 
+    }
+    50% { 
+        transform: translateY(-12px) rotate(0deg); 
+    }
+    75% { 
+        transform: translateY(-8px) rotate(-1deg); 
+    }
+}
+
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Action buttons styling */
+.about-btn {
+    padding: 12px 24px;
+    border-radius: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.about-btn:hover::before {
+    opacity: 1;
+}
+
+.about-btn-primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
+}
+
+.about-btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 112, 243, 0.4);
+}
+
+.about-btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.about-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Stats cards enhancements */
+.stats-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stats-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.stats-card:hover .stats-icon {
+    transform: scale(1.1);
+}
+
+/* Goal badges styling */
+.goal-badge {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 20px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.goal-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive enhancements */
+@media (max-width: 1024px) {
+    .about-profile-container {
+        transform: scale(0.9);
+        margin: 2rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-profile-container {
+        transform: scale(0.8);
+    }
+    
+    .about-glass-card {
+        padding: 1.5rem;
+    }
+    
+    .stats-card {
+        padding: 0.75rem;
+    }
+    
+    .about-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-profile-container {
+        transform: scale(0.7);
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .goal-badge {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+/* Enhanced accessibility */
+.about-btn:focus,
+.stats-card:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Smooth scrolling enhancement */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===================
+   ENHANCED CONTACT SECTION STYLES
+   =================== */
+
+/* Contact header animations */
+.contact-header {
+    opacity: 0;
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+/* Enhanced form styling */
+.form-group {
+    position: relative;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(107, 114, 128, 0.7);
+    transition: opacity 0.3s ease;
+}
+
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* Label styling */
+.form-group label {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.form-group label i {
+    margin-right: 0.5rem;
+    font-size: 14px;
+}
+
+/* Submit button enhancements */
+.contact-submit-btn {
+    background: linear-gradient(135deg, var(--primary), #0056b3);
+    border: none;
+    border-radius: 16px;
+    padding: 16px 32px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 112, 243, 0.3);
+}
+
+.contact-submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 112, 243, 0.4);
+    background: linear-gradient(135deg, #0056b3, var(--primary));
+}
+
+.contact-submit-btn:active {
+    transform: translateY(-1px);
+}
+
+.contact-submit-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.contact-submit-btn:hover::before {
+    opacity: 1;
+}
+
+/* Contact info cards */
+.contact-info-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.contact-info-card:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.contact-info-card:hover .contact-info-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Social media links styling */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-link:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Success message styling */
+#success-message {
+    background: rgba(0, 179, 131, 0.1);
+    border: 1px solid rgba(0, 179, 131, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    color: var(--secondary);
+    font-weight: 600;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Call to action badges */
+.cta-badge {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive enhancements */
+@media (max-width: 1024px) {
+    .contact-info-card {
+        padding: 1rem;
+    }
+    
+    .contact-info-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .contact-submit-btn {
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+    
+    .social-links {
+        gap: 0.75rem;
+    }
+    
+    .social-link {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info-card {
+        padding: 0.75rem;
+    }
+    
+    .cta-badge {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+/* Form validation states */
+.form-group input:valid,
+.form-group select:valid,
+.form-group textarea:valid {
+    border-color: var(--secondary);
+}
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group select:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+}
+
+/* Loading state for submit button */
+.contact-submit-btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.contact-submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+/* Enhanced accessibility */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.contact-submit-btn:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
