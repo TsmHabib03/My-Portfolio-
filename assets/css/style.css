@@ -47,27 +47,28 @@ body {
 }
 
 /* ===================
-   DARK THEME - Cyberpunk Neon Blue
+   DARK THEME - GitHub Dark
    =================== */
 [data-theme="dark"] {
-    --primary: #00e1ff;
-    --primary-hover: #00b3cc;
-    --secondary: #00ff9d;
-    --secondary-hover: #00cc7d;
-    --accent: #ff00ff;
-    --accent-hover: #cc00cc;
-    --text-primary: #f0f6fc;
-    --text-secondary: #a8b2c1;
-    --text-muted: #6b7280;
-    --bg-primary: #0a0e17;
-    --bg-secondary: #0f1623;
-    --bg-card: rgba(15, 22, 35, 0.9);
-    --border: rgba(0, 225, 255, 0.15);
-    --border-light: rgba(0, 225, 255, 0.08);
-    --shadow: 0 4px 20px rgba(0, 225, 255, 0.1);
-    --shadow-md: 0 8px 30px rgba(0, 225, 255, 0.15);
-    --shadow-lg: 0 10px 40px rgba(0, 225, 255, 0.2);
-    --neon-glow: 0 0 20px rgba(0, 225, 255, 0.4);
+    --primary: #58a6ff;
+    --primary-hover: #1f6feb;
+    --secondary: #3fb950;
+    --secondary-hover: #2ea043;
+    --accent: #f78166;
+    --accent-hover: #ea6045;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-card: #161b22;
+    --border: #30363d;
+    --border-light: #21262d;
+    --shadow: 0 4px 8px rgba(1, 4, 9, 0.85);
+    --shadow-md: 0 8px 16px rgba(1, 4, 9, 0.85);
+    --shadow-lg: 0 16px 32px rgba(1, 4, 9, 0.85);
+    --neon-glow: 0 0 10px rgba(88, 166, 255, 0.3);
+}
 }
 
 /* Dark Mode Body */
@@ -2058,6 +2059,169 @@ html {
 }
 
 .contact-submit-btn:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ===================
+   GITHUB CONTRIBUTIONS GRAPH
+   =================== */
+.contributions-wrapper {
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.contributions-wrapper svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.loading-spinner::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-right: 0.75rem;
+    border: 2px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spinner-rotation 0.8s linear infinite;
+}
+
+@keyframes spinner-rotation {
+    to { transform: rotate(360deg); }
+}
+
+/* GitHub contribution colors for dark mode */
+[data-theme="dark"] .contributions-wrapper svg {
+    color-scheme: dark;
+}
+
+/* Adjust SVG colors for dark theme to match GitHub */
+[data-theme="dark"] .contributions-wrapper svg rect[fill="#ebedf0"],
+[data-theme="dark"] .contributions-wrapper svg rect[fill="#ebedf0"]:not([data-level]) {
+    fill: #161b22 !important;
+}
+
+[data-theme="dark"] .contributions-wrapper svg rect[data-level="0"],
+[data-theme="dark"] .contributions-wrapper svg rect[fill="#9be9a8"] {
+    fill: #0e4429 !important;
+}
+
+[data-theme="dark"] .contributions-wrapper svg rect[data-level="1"],
+[data-theme="dark"] .contributions-wrapper svg rect[fill="#40c463"] {
+    fill: #006d32 !important;
+}
+
+[data-theme="dark"] .contributions-wrapper svg rect[data-level="2"],
+[data-theme="dark"] .contributions-wrapper svg rect[fill="#30a14e"] {
+    fill: #26a641 !important;
+}
+
+[data-theme="dark"] .contributions-wrapper svg rect[data-level="3"],
+[data-theme="dark"] .contributions-wrapper svg rect[fill="#216e39"] {
+    fill: #39d353 !important;
+}
+
+[data-theme="dark"] .contributions-wrapper svg text {
+    fill: #8b949e !important;
+}
+
+/* Light mode GitHub colors */
+.contributions-wrapper svg rect[fill="#ebedf0"] {
+    fill: #ebedf0;
+}
+
+.contributions-wrapper svg rect[fill="#9be9a8"] {
+    fill: #9be9a8;
+}
+
+.contributions-wrapper svg rect[fill="#40c463"] {
+    fill: #40c463;
+}
+
+.contributions-wrapper svg rect[fill="#30a14e"] {
+    fill: #30a14e;
+}
+
+.contributions-wrapper svg rect[fill="#216e39"] {
+    fill: #216e39;
+}
+
+/* Fallback message styling */
+.contributions-fallback {
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.contributions-fallback a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.contributions-fallback a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .contributions-wrapper {
+        overflow-x: scroll;
+        padding-bottom: 0.5rem;
+    }
+
+    .contributions-wrapper svg {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contributions-wrapper svg {
+        min-width: 500px;
+    }
+}
+
+/* Scrollbar styling for contributions */
+.contributions-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.contributions-wrapper::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+.contributions-wrapper::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.contributions-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Accessibility improvements */
+.contributions-wrapper:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
 }

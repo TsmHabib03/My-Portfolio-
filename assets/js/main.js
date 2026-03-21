@@ -109,7 +109,10 @@ document.querySelectorAll('section').forEach(section => {
 document.addEventListener('DOMContentLoaded', function() {
     // Remove any loading states
     document.body.classList.add('loaded');
-    
+
+    // Load GitHub contributions
+    loadGitHubContributions();
+
     // Initialize any other components here
     console.log('Portfolio website loaded successfully!');
 });
@@ -167,7 +170,7 @@ function enableDarkMode(animate = true) {
 function disableDarkMode() {
     htmlElement.removeAttribute('data-theme');
     localStorage.setItem('theme', 'light');
-    
+
     const icon = themeToggle?.querySelector('i');
     if (icon) {
         icon.classList.remove('fa-sun');
@@ -175,4 +178,184 @@ function disableDarkMode() {
         themeToggle.classList.add('active');
         setTimeout(() => themeToggle.classList.remove('active'), 500);
     }
+
+    // Reload contributions to apply light mode colors
+    if (typeof loadGitHubContributions === 'function') {
+        loadGitHubContributions();
+    }
 }
+
+// ===================
+// GITHUB CONTRIBUTIONS LOADER
+// ===================
+
+// Configuration - Update these values
+const GITHUB_USERNAME = 'TsmHabib03'; // Change this to your GitHub username
+const CONTRIBUTIONS_YEAR = new Date().getFullYear();
+const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
+
+/**
+ * Loads and displays GitHub contributions graph
+ * Features: caching, dark mode support, fallback handling
+ */
+async function loadGitHubContributions() {
+    const container = document.getElementById('github-contributions-container');
+    if (!container) return;
+
+    const cacheKey = `gh_cal_${GITHUB_USERNAME}_${CONTRIBUTIONS_YEAR}`;
+    const cacheTimeKey = `${cacheKey}_timestamp`;
+
+    // Check cache first
+    const cachedData = localStorage.getItem(cacheKey);
+    const cacheTime = localStorage.getItem(cacheTimeKey);
+    const now = Date.now();
+
+    if (cachedData && cacheTime && (now - parseInt(cacheTime)) < CACHE_DURATION) {
+        console.log('Loading contributions from cache');
+        renderContributions(container, cachedData);
+        return;
+    }
+
+    // Fetch fresh data
+    try {
+        container.innerHTML = '<div class="loading-spinner">Loading contributions...</div>';
+
+        const response = await fetch(`https://github.com/users/${GITHUB_USERNAME}/contributions`);
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const svgText = await response.text();
+
+        // Validate SVG content
+        if (!svgText.includes('<svg') || !svgText.includes('</svg>')) {
+            throw new Error('Invalid SVG response');
+        }
+
+        // Cache the result
+        localStorage.setItem(cacheKey, svgText);
+        localStorage.setItem(cacheTimeKey, now.toString());
+
+        renderContributions(container, svgText);
+        console.log('GitHub contributions loaded successfully');
+
+    } catch (error) {
+        console.error('Failed to load GitHub contributions:', error);
+        showFallback(container);
+    }
+}
+
+/**
+ * Renders contributions SVG and applies dark mode colors
+ */
+function renderContributions(container, svgText) {
+    // Update aria-label with current year
+    container.setAttribute('aria-label', `${GITHUB_USERNAME}'s GitHub contributions in ${CONTRIBUTIONS_YEAR}`);
+
+    // Insert SVG
+    container.innerHTML = svgText;
+
+    // Apply dark mode colors if needed
+    applyThemeToContributions();
+}
+
+/**
+ * Applies appropriate theme colors to contributions graph
+ */
+function applyThemeToContributions() {
+    const container = document.getElementById('github-contributions-container');
+    if (!container) return;
+
+    const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+    const svg = container.querySelector('svg');
+
+    if (!svg) return;
+
+    // Dark mode color mapping (GitHub's official dark theme colors)
+    const darkModeColors = {
+        '#ebedf0': '#161b22', // Empty
+        '#9be9a8': '#0e4429', // Level 1
+        '#40c463': '#006d32', // Level 2
+        '#30a14e': '#26a641', // Level 3
+        '#216e39': '#39d353'  // Level 4
+    };
+
+    // Light mode colors (restore defaults)
+    const lightModeColors = {
+        '#161b22': '#ebedf0',
+        '#0e4429': '#9be9a8',
+        '#006d32': '#40c463',
+        '#26a641': '#30a14e',
+        '#39d353': '#216e39'
+    };
+
+    const colorMap = isDarkMode ? darkModeColors : lightModeColors;
+    const rects = svg.querySelectorAll('rect');
+
+    rects.forEach(rect => {
+        const currentFill = rect.getAttribute('fill');
+        if (currentFill && colorMap[currentFill]) {
+            rect.setAttribute('fill', colorMap[currentFill]);
+        }
+    });
+
+    // Update text color for dark mode
+    const texts = svg.querySelectorAll('text');
+    texts.forEach(text => {
+        if (isDarkMode) {
+            text.setAttribute('fill', '#8b949e');
+        } else {
+            text.setAttribute('fill', '#000000');
+        }
+    });
+}
+
+/**
+ * Shows fallback message when contributions can't be loaded
+ */
+function showFallback(container) {
+    container.innerHTML = `
+        <div class="contributions-fallback">
+            <p style="margin-bottom: 1rem;">
+                <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>
+                Unable to load GitHub contributions graph.
+            </p>
+            <a href="https://github.com/${GITHUB_USERNAME}"
+               target="_blank"
+               rel="noopener noreferrer">
+                View ${GITHUB_USERNAME}'s GitHub profile →
+            </a>
+        </div>
+    `;
+}
+
+// Update enableDarkMode to reload contributions
+function enableDarkMode(animate = true) {
+    htmlElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+
+    const icon = themeToggle?.querySelector('i');
+    if (icon) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        if (animate) {
+            themeToggle.classList.add('active');
+            setTimeout(() => themeToggle.classList.remove('active'), 500);
+        }
+    }
+
+    // Apply dark mode to contributions
+    applyThemeToContributions();
+}
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+            enableDarkMode(false);
+        } else {
+            disableDarkMode();
+        }
+    }
+});
