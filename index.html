@@ -27,6 +27,7 @@
                     <a href="#home" class="nav-link text-gray-600 hover:text-primary font-medium">Home</a>
                     <a href="#about" class="nav-link text-gray-600 hover:text-primary font-medium">About</a>
                     <a href="#projects" class="nav-link text-gray-600 hover:text-primary font-medium">Projects</a>
+                    <a href="#contributions" class="nav-link text-gray-600 hover:text-primary font-medium">Contributions</a>
                     <a href="#certificates" class="nav-link text-gray-600 hover:text-primary font-medium">Certificates</a>
                     <a href="#contact" class="nav-link text-gray-600 hover:text-primary font-medium">Contact</a>
                 </div>
@@ -51,6 +52,7 @@
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
                     <a href="#projects">Projects</a>
+                    <a href="#contributions">Contributions</a>
                     <a href="#certificates">Certificates</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -360,38 +362,7 @@
                         </div>
                     </div>
 
-                    <!-- GitHub Contributions Card -->
-                    <div class="bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div class="flex items-center justify-between mb-6">
-                            <h3 class="text-2xl font-bold text-gray-900 flex items-center">
-                                <i class="fab fa-github text-primary mr-3"></i>
-                                GitHub Contributions
-                            </h3>
-                            <a href="https://github.com/TsmHabib03"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               class="text-sm text-gray-600 hover:text-primary transition-colors duration-200 flex items-center gap-1">
-                                View profile
-                                <i class="fas fa-external-link-alt text-xs"></i>
-                            </a>
-                        </div>
 
-                        <!-- Year Selector Tabs -->
-                        <div class="mb-4 flex flex-wrap gap-2" id="year-tabs">
-                            <button class="year-tab active" data-year="2026">2026</button>
-                            <button class="year-tab" data-year="2025">2025</button>
-                            <button class="year-tab" data-year="2024">2024</button>
-                            <button class="year-tab" data-year="2023">2023</button>
-                            <button class="year-tab" data-year="2022">2022</button>
-                        </div>
-
-                        <div id="github-contributions-container"
-                             role="img"
-                             aria-label="GitHub contributions graph"
-                             class="contributions-wrapper">
-                            <div class="loading-spinner">Loading contributions...</div>
-                        </div>
-                    </div>
                 </div>
             </div>
             
@@ -870,6 +841,112 @@
                 <a href="https://github.com/TsmHabib03" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-gray-900 rounded-2xl font-semibold hover:bg-white/30 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl group">
                     <i class="fab fa-github mr-3 text-xl group-hover:rotate-12 transition-transform duration-300"></i>
                     View All Projects on GitHub
+                    <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Contributions Section -->
+    <section id="contributions" class="contrib-section py-20 relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-10 left-10 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <div class="px-4 py-2 bg-green-500/10 backdrop-blur-sm border border-green-500/20 text-green-400 text-sm font-medium rounded-full shadow-lg">
+                        <i class="fab fa-github mr-2"></i>Coding Activity
+                    </div>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 contrib-heading relative">
+                    GitHub Contributions
+                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
+                </h2>
+                <p class="text-xl contrib-sub max-w-3xl mx-auto leading-relaxed">
+                    A visual history of my coding activity and open-source contributions
+                </p>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                <div class="contrib-stat-card" id="stat-total">
+                    <div class="contrib-stat-number" id="total-contributions">—</div>
+                    <div class="contrib-stat-label">Total Contributions</div>
+                </div>
+                <div class="contrib-stat-card">
+                    <div class="contrib-stat-number" id="current-streak">—</div>
+                    <div class="contrib-stat-label">Current Streak</div>
+                </div>
+                <div class="contrib-stat-card">
+                    <div class="contrib-stat-number" id="longest-streak">—</div>
+                    <div class="contrib-stat-label">Longest Streak</div>
+                </div>
+                <div class="contrib-stat-card">
+                    <div class="contrib-stat-number" id="active-days">—</div>
+                    <div class="contrib-stat-label">Active Days</div>
+                </div>
+            </div>
+
+            <!-- Contribution Graph Card -->
+            <div class="contrib-graph-card">
+                <!-- Card Header -->
+                <div class="contrib-graph-header">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fab fa-github text-green-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold contrib-card-title leading-none">TsmHabib03</h3>
+                            <a href="https://github.com/TsmHabib03" target="_blank" rel="noopener noreferrer"
+                               class="text-sm contrib-card-sub hover:text-green-500 transition-colors duration-200 flex items-center gap-1 mt-0.5">
+                                github.com/TsmHabib03
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Year Selector Tabs -->
+                    <div class="flex flex-wrap gap-2" id="year-tabs">
+                        <button class="year-tab active" data-year="2026">2026</button>
+                        <button class="year-tab" data-year="2025">2025</button>
+                        <button class="year-tab" data-year="2024">2024</button>
+                        <button class="year-tab" data-year="2023">2023</button>
+                        <button class="year-tab" data-year="2022">2022</button>
+                    </div>
+                </div>
+
+                <!-- Contribution Graph -->
+                <div id="github-contributions-container"
+                     role="img"
+                     aria-label="GitHub contributions graph"
+                     class="contributions-wrapper">
+                    <div class="loading-spinner">Loading contributions...</div>
+                </div>
+
+                <!-- Legend -->
+                <div class="contrib-legend">
+                    <span class="contrib-legend-label">Less</span>
+                    <div class="contrib-legend-cell level-0"></div>
+                    <div class="contrib-legend-cell level-1"></div>
+                    <div class="contrib-legend-cell level-2"></div>
+                    <div class="contrib-legend-cell level-3"></div>
+                    <div class="contrib-legend-cell level-4"></div>
+                    <span class="contrib-legend-label">More</span>
+                </div>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="text-center mt-10">
+                <a href="https://github.com/TsmHabib03" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center px-8 py-4 contrib-cta-btn rounded-2xl font-semibold transition-all duration-300 shadow-lg group">
+                    <i class="fab fa-github mr-3 text-xl group-hover:rotate-12 transition-transform duration-300"></i>
+                    View Full Profile on GitHub
                     <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
                 </a>
             </div>

@@ -69,7 +69,6 @@ body {
     --shadow-lg: 0 16px 32px rgba(1, 4, 9, 0.85);
     --neon-glow: 0 0 10px rgba(88, 166, 255, 0.3);
 }
-}
 
 /* Dark Mode Body */
 [data-theme="dark"] body {
@@ -2276,3 +2275,436 @@ html {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
+
+/* ════════════════════════════════════════
+   CONTRIBUTIONS SECTION  – Light & Dark
+   ════════════════════════════════════════ */
+
+/* ── Section background ── */
+.contrib-section {
+    background: #f6f8fa;
+}
+
+[data-theme="dark"] .contrib-section {
+    background: linear-gradient(to bottom right, #020409, #0d1117, #020409);
+}
+
+/* ── Section heading & subtitle ── */
+.contrib-heading {
+    color: #1f2328;
+}
+
+[data-theme="dark"] .contrib-heading {
+    color: #e6edf3;
+}
+
+.contrib-sub {
+    color: #57606a;
+}
+
+[data-theme="dark"] .contrib-sub {
+    color: #8b949e;
+}
+
+/* ── Stat cards ── */
+.contrib-stat-card {
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+.contrib-stat-card:hover {
+    border-color: #2da44e;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(45,164,78,.12);
+}
+
+[data-theme="dark"] .contrib-stat-card {
+    background: rgba(22, 27, 34, 0.8);
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .contrib-stat-card:hover {
+    border-color: #39d353;
+    box-shadow: 0 8px 32px rgba(57,211,83,.12);
+}
+
+.contrib-stat-number {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #2da44e;
+    line-height: 1;
+    margin-bottom: .5rem;
+    font-variant-numeric: tabular-nums;
+}
+
+[data-theme="dark"] .contrib-stat-number {
+    color: #39d353;
+}
+
+.contrib-stat-label {
+    font-size: .75rem;
+    font-weight: 600;
+    color: #57606a;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+[data-theme="dark"] .contrib-stat-label {
+    color: #8b949e;
+}
+
+/* ── Main graph card ── */
+.contrib-graph-card {
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,.06);
+}
+
+[data-theme="dark"] .contrib-graph-card {
+    background: #161b22;
+    border-color: #30363d;
+    box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+/* ── Card header ── */
+.contrib-graph-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #d0d7de;
+}
+
+[data-theme="dark"] .contrib-graph-header {
+    border-bottom-color: #30363d;
+}
+
+.contrib-card-title {
+    color: #1f2328;
+}
+
+[data-theme="dark"] .contrib-card-title {
+    color: #e6edf3;
+}
+
+.contrib-card-sub {
+    color: #57606a;
+}
+
+[data-theme="dark"] .contrib-card-sub {
+    color: #8b949e;
+}
+
+/* ── Contributions wrapper ── */
+.contributions-wrapper {
+    padding: 1.25rem 2rem;
+    overflow-x: auto;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* ── Heatmap scroll area ── */
+.heatmap-scroll {
+    min-width: 720px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* ── Month labels row ── */
+.heatmap-month-row {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding-left: 0;
+}
+
+.heatmap-day-label-spacer {
+    width: 26px;
+    flex-shrink: 0;
+}
+
+.heatmap-month-label {
+    width: 12px;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: #57606a;
+    white-space: nowrap;
+    overflow: visible;
+    min-width: 0;
+}
+
+[data-theme="dark"] .heatmap-month-label {
+    color: #8b949e;
+}
+
+/* ── Grid body ── */
+.heatmap-grid-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+/* ── Day labels column ── */
+.heatmap-day-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 26px;
+    flex-shrink: 0;
+}
+
+.heatmap-day-label {
+    height: 12px;
+    font-size: 9px;
+    color: #57606a;
+    line-height: 12px;
+    text-align: right;
+    padding-right: 4px;
+}
+
+[data-theme="dark"] .heatmap-day-label {
+    color: #8b949e;
+}
+
+/* ── Week columns ── */
+.heatmap-week-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* ── Cells ── */
+.heatmap-cell {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    cursor: default;
+    transition: opacity .15s, outline .1s;
+    flex-shrink: 0;
+}
+
+.heatmap-cell:hover {
+    outline: 1px solid rgba(0,0,0,.3);
+    outline-offset: 1px;
+}
+
+[data-theme="dark"] .heatmap-cell:hover {
+    outline: 1px solid rgba(255,255,255,.2);
+}
+
+.heatmap-cell--empty {
+    background: transparent !important;
+}
+
+/* ── Legend level color classes (light theme) ── */
+.level-0 { background-color: #ebedf0; }
+.level-1 { background-color: #9be9a8; }
+.level-2 { background-color: #40c463; }
+.level-3 { background-color: #30a14e; }
+.level-4 { background-color: #216e39; }
+
+/* ── Legend level color classes (dark theme) ── */
+[data-theme="dark"] .level-0 { background-color: #161b22; }
+[data-theme="dark"] .level-1 { background-color: #0e4429; }
+[data-theme="dark"] .level-2 { background-color: #006d32; }
+[data-theme="dark"] .level-3 { background-color: #26a641; }
+[data-theme="dark"] .level-4 { background-color: #39d353; }
+
+/* ── Total contribution count label ── */
+.heatmap-total-label {
+    font-size: 12px;
+    color: #57606a;
+    margin-top: 8px;
+    padding-left: 30px;
+}
+
+[data-theme="dark"] .heatmap-total-label {
+    color: #8b949e;
+}
+
+/* ── Legend bar ── */
+.contrib-legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    padding: 1rem 2rem 1.25rem;
+    border-top: 1px solid #d0d7de;
+}
+
+[data-theme="dark"] .contrib-legend {
+    border-top-color: #30363d;
+}
+
+.contrib-legend-label {
+    font-size: .7rem;
+    color: #57606a;
+    letter-spacing: .03em;
+    padding: 0 4px;
+}
+
+[data-theme="dark"] .contrib-legend-label {
+    color: #8b949e;
+}
+
+.contrib-legend-cell {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+}
+
+/* ── CTA button ── */
+.contrib-cta-btn {
+    background: rgba(45,164,78,.08);
+    border: 1px solid rgba(45,164,78,.3);
+    color: #2da44e;
+}
+
+.contrib-cta-btn:hover {
+    background: rgba(45,164,78,.14);
+    border-color: rgba(45,164,78,.6);
+    box-shadow: 0 0 20px rgba(45,164,78,.15);
+}
+
+[data-theme="dark"] .contrib-cta-btn {
+    background: rgba(57,211,83,.08);
+    border-color: rgba(57,211,83,.3);
+    color: #39d353;
+}
+
+[data-theme="dark"] .contrib-cta-btn:hover {
+    background: rgba(57,211,83,.14);
+    border-color: rgba(57,211,83,.6);
+    box-shadow: 0 0 20px rgba(57,211,83,.15);
+}
+
+/* ── Loading spinner ── */
+.loading-spinner {
+    color: #57606a;
+    font-size: .9rem;
+    padding: 3rem;
+    text-align: center;
+    width: 100%;
+}
+
+[data-theme="dark"] .loading-spinner {
+    color: #8b949e;
+}
+
+/* ── Fallback ── */
+.contributions-fallback {
+    color: #57606a;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+[data-theme="dark"] .contributions-fallback {
+    color: #8b949e;
+}
+
+.contributions-fallback a {
+    color: #2da44e;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    display: block;
+    margin-top: .75rem;
+}
+
+[data-theme="dark"] .contributions-fallback a {
+    color: #39d353;
+}
+
+/* ── Year tabs ── */
+.year-tab {
+    padding: 5px 14px;
+    font-size: .8rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid #d0d7de;
+    background: transparent;
+    color: #57606a;
+    cursor: pointer;
+    transition: all .2s ease;
+    outline: none;
+}
+
+.year-tab:hover {
+    border-color: #2da44e;
+    color: #2da44e;
+    background: rgba(45,164,78,.06);
+}
+
+.year-tab.active {
+    background: rgba(45,164,78,.12);
+    border-color: #2da44e;
+    color: #2da44e;
+    box-shadow: 0 0 10px rgba(45,164,78,.2);
+}
+
+[data-theme="dark"] .year-tab {
+    border-color: #30363d;
+    color: #8b949e;
+}
+
+[data-theme="dark"] .year-tab:hover {
+    border-color: #39d353;
+    color: #39d353;
+    background: rgba(57,211,83,.06);
+}
+
+[data-theme="dark"] .year-tab.active {
+    background: rgba(57,211,83,.12);
+    border-color: #39d353;
+    color: #39d353;
+    box-shadow: 0 0 12px rgba(57,211,83,.2);
+}
+
+/* ── Scrollbar ── */
+.contributions-wrapper::-webkit-scrollbar { height: 5px; }
+.contributions-wrapper::-webkit-scrollbar-track { background: transparent; }
+.contributions-wrapper::-webkit-scrollbar-thumb { background: #d0d7de; border-radius: 3px; }
+.contributions-wrapper::-webkit-scrollbar-thumb:hover { background: #2da44e; }
+
+[data-theme="dark"] .contributions-wrapper::-webkit-scrollbar-thumb { background: #30363d; }
+[data-theme="dark"] .contributions-wrapper::-webkit-scrollbar-thumb:hover { background: #39d353; }
+
+/* ── Accessibility ── */
+.year-tab:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .contrib-graph-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 1.25rem;
+    }
+    .contributions-wrapper {
+        padding: 1rem 1.25rem;
+    }
+    .contrib-legend {
+        padding: .75rem 1.25rem 1rem;
+        justify-content: center;
+    }
+    .contrib-stat-number {
+        font-size: 1.75rem;
+    }
+}
+
+
