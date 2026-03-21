@@ -362,14 +362,33 @@
 
                     <!-- GitHub Contributions Card -->
                     <div class="bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 flex items-center">
-                            <i class="fab fa-github text-primary mr-3"></i>
-                            GitHub Contributions
-                        </h3>
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-2xl font-bold text-gray-900 flex items-center">
+                                <i class="fab fa-github text-primary mr-3"></i>
+                                GitHub Contributions
+                            </h3>
+                            <a href="https://github.com/TsmHabib03"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="text-sm text-gray-600 hover:text-primary transition-colors duration-200 flex items-center gap-1">
+                                View profile
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+
+                        <!-- Year Selector Tabs -->
+                        <div class="mb-4 flex flex-wrap gap-2" id="year-tabs">
+                            <button class="year-tab active" data-year="2026">2026</button>
+                            <button class="year-tab" data-year="2025">2025</button>
+                            <button class="year-tab" data-year="2024">2024</button>
+                            <button class="year-tab" data-year="2023">2023</button>
+                            <button class="year-tab" data-year="2022">2022</button>
+                        </div>
+
                         <div id="github-contributions-container"
                              role="img"
                              aria-label="GitHub contributions graph"
-                             class="contributions-wrapper overflow-x-auto">
+                             class="contributions-wrapper">
                             <div class="loading-spinner">Loading contributions...</div>
                         </div>
                     </div>

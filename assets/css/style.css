@@ -2066,6 +2066,47 @@ html {
 /* ===================
    GITHUB CONTRIBUTIONS GRAPH
    =================== */
+
+/* Year selector tabs */
+.year-tab {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.year-tab:hover {
+    background: var(--bg-secondary);
+    border-color: var(--text-muted);
+}
+
+.year-tab.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+[data-theme="dark"] .year-tab {
+    background: var(--bg-secondary);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .year-tab:hover {
+    background: var(--bg-card);
+    border-color: var(--primary);
+}
+
+[data-theme="dark"] .year-tab.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
 .contributions-wrapper {
     width: 100%;
     min-height: 200px;
@@ -2185,6 +2226,11 @@ html {
 
 /* Mobile responsive styles */
 @media (max-width: 768px) {
+    .year-tab {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+
     .contributions-wrapper {
         overflow-x: scroll;
         padding-bottom: 0.5rem;
@@ -2222,6 +2268,11 @@ html {
 
 /* Accessibility improvements */
 .contributions-wrapper:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.year-tab:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
 }

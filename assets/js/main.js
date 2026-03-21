@@ -110,7 +110,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Remove any loading states
     document.body.classList.add('loaded');
 
-    // Load GitHub contributions
+    // Initialize year tabs
+    initializeYearTabs();
+
+    // Load GitHub contributions for current year
     loadGitHubContributions();
 
     // Initialize any other components here
@@ -191,18 +194,22 @@ function disableDarkMode() {
 
 // Configuration - Update these values
 const GITHUB_USERNAME = 'TsmHabib03'; // Change this to your GitHub username
-const CONTRIBUTIONS_YEAR = new Date().getFullYear();
+const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022]; // Years to display
 const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
 
+// Track current selected year
+let currentYear = new Date().getFullYear();
+
 /**
- * Loads and displays GitHub contributions graph
+ * Loads and displays GitHub contributions graph for a specific year
  * Features: caching, dark mode support, fallback handling
  */
-async function loadGitHubContributions() {
+async function loadGitHubContributions(year = currentYear) {
     const container = document.getElementById('github-contributions-container');
     if (!container) return;
 
-    const cacheKey = `gh_cal_${GITHUB_USERNAME}_${CONTRIBUTIONS_YEAR}`;
+    currentYear = year;
+    const cacheKey = `gh_cal_${GITHUB_USERNAME}_${year}`;
     const cacheTimeKey = `${cacheKey}_timestamp`;
 
     // Check cache first
@@ -211,8 +218,8 @@ async function loadGitHubContributions() {
     const now = Date.now();
 
     if (cachedData && cacheTime && (now - parseInt(cacheTime)) < CACHE_DURATION) {
-        console.log('Loading contributions from cache');
-        renderContributions(container, cachedData);
+        console.log(`Loading ${year} contributions from cache`);
+        renderContributions(container, cachedData, year);
         return;
     }
 
@@ -220,7 +227,12 @@ async function loadGitHubContributions() {
     try {
         container.innerHTML = '<div class="loading-spinner">Loading contributions...</div>';
 
-        const response = await fetch(`https://github.com/users/${GITHUB_USERNAME}/contributions`);
+        // GitHub's contributions endpoint with year parameter
+        const url = year === new Date().getFullYear()
+            ? `https://github.com/users/${GITHUB_USERNAME}/contributions`
+            : `https://github.com/users/${GITHUB_USERNAME}/contributions?from=${year}-01-01&to=${year}-12-31`;
+
+        const response = await fetch(url);
 
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -237,21 +249,21 @@ async function loadGitHubContributions() {
         localStorage.setItem(cacheKey, svgText);
         localStorage.setItem(cacheTimeKey, now.toString());
 
-        renderContributions(container, svgText);
-        console.log('GitHub contributions loaded successfully');
+        renderContributions(container, svgText, year);
+        console.log(`GitHub contributions for ${year} loaded successfully`);
 
     } catch (error) {
-        console.error('Failed to load GitHub contributions:', error);
-        showFallback(container);
+        console.error(`Failed to load GitHub contributions for ${year}:`, error);
+        showFallback(container, year);
     }
 }
 
 /**
  * Renders contributions SVG and applies dark mode colors
  */
-function renderContributions(container, svgText) {
+function renderContributions(container, svgText, year) {
     // Update aria-label with current year
-    container.setAttribute('aria-label', `${GITHUB_USERNAME}'s GitHub contributions in ${CONTRIBUTIONS_YEAR}`);
+    container.setAttribute('aria-label', `${GITHUB_USERNAME}'s GitHub contributions in ${year}`);
 
     // Insert SVG
     container.innerHTML = svgText;
@@ -314,12 +326,12 @@ function applyThemeToContributions() {
 /**
  * Shows fallback message when contributions can't be loaded
  */
-function showFallback(container) {
+function showFallback(container, year) {
     container.innerHTML = `
         <div class="contributions-fallback">
             <p style="margin-bottom: 1rem;">
                 <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>
-                Unable to load GitHub contributions graph.
+                Unable to load GitHub contributions for ${year}.
             </p>
             <a href="https://github.com/${GITHUB_USERNAME}"
                target="_blank"
@@ -328,6 +340,26 @@ function showFallback(container) {
             </a>
         </div>
     `;
+}
+
+/**
+ * Initialize year tabs
+ */
+function initializeYearTabs() {
+    const yearTabs = document.querySelectorAll('.year-tab');
+
+    yearTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const year = parseInt(this.getAttribute('data-year'));
+
+            // Update active state
+            yearTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+
+            // Load contributions for selected year
+            loadGitHubContributions(year);
+        });
+    });
 }
 
 // Update enableDarkMode to reload contributions
