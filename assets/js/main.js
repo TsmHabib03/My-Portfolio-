@@ -60,17 +60,85 @@ if (mobileMenuToggle && mobileMenu) {
     });
 }
 
-// Form submission handling
-const contactForm = document.querySelector('#contact form');
+// ===================
+// CONTACT FORM – Google Sheets Integration
+// ===================
+
+// ⚠️ IMPORTANT: Replace this URL with your deployed Google Apps Script Web App URL
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwDc7nbB4-PAkVL0O0f-i9_AmkZRx_cOf3zjDVCRR24GpEl1nS1Nfc7ErQ6QWX15AkN_g/exec';
+
+const contactForm = document.getElementById('contact-form');
+
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
+
+        // Get UI elements
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnLoading = document.getElementById('btn-loading');
+        const successMsg = document.getElementById('form-success');
+        const errorMsg = document.getElementById('form-error');
+        const errorText = document.getElementById('error-text');
+
+        // Reset messages
+        successMsg.classList.add('hidden');
+        errorMsg.classList.add('hidden');
+
+        // Show loading state
+        submitBtn.disabled = true;
+        btnText.classList.add('hidden');
+        btnLoading.classList.remove('hidden');
+        btnLoading.classList.add('flex');
+
+        // Collect form data
         const formData = new FormData(this);
-        const formObject = {};
-        formData.forEach((value, key) => { formObject[key] = value; });
-        console.log('Form submitted:', formObject);
-        alert("Thank you for your message! I'll get back to you soon.");
-        this.reset();
+        const data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            subject: formData.get('subject'),
+            message: formData.get('message'),
+            timestamp: new Date().toISOString()
+        };
+
+        try {
+            // Send data to Google Apps Script
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Required for Google Apps Script
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            // Since mode is 'no-cors', we can't read the response
+            // We assume success if no error is thrown
+            console.log('✓ Contact form submitted successfully');
+
+            // Show success message
+            successMsg.classList.remove('hidden');
+            contactForm.reset();
+
+            // Auto-hide success message after 5 seconds
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 5000);
+
+        } catch (error) {
+            console.error('Contact form error:', error);
+
+            // Show error message
+            errorText.textContent = 'Failed to send message. Please try again or email me directly.';
+            errorMsg.classList.remove('hidden');
+        } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            btnText.classList.remove('hidden');
+            btnLoading.classList.add('hidden');
+            btnLoading.classList.remove('flex');
+        }
     });
 }
 
@@ -161,16 +229,8 @@ const MONTH_NAMES       = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'
 
 let currentYear = new Date().getFullYear();
 
-// GitHub's official heatmap colors – light and dark palettes
-const HEATMAP_COLORS = {
-    light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-    dark:  ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
-};
-
-/** Returns current theme name */
-function getTheme() {
-    return htmlElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-}
+// Note: Heatmap colors are now handled via CSS classes (level-0 through level-4)
+// in style.css for both light and dark themes
 
 /**
  * Load contributions from the CORS-free JSON API, with 1h local cache.
@@ -234,7 +294,6 @@ function renderHeatmap(container, data, year) {
 
     // Build week grid (Sunday-first, 7 rows)
     const weeks  = buildWeekGrid(contributions, year);
-    const palette = HEATMAP_COLORS[getTheme()];
 
     // ─── Outer scroll wrapper ───
     const scroll = document.createElement('div');
@@ -289,7 +348,7 @@ function renderHeatmap(container, data, year) {
             cell.className = 'heatmap-cell';
             if (day) {
                 const level = day.level ?? 0;
-                cell.style.backgroundColor = palette[level];
+                cell.classList.add(`level-${level}`);
                 cell.dataset.level = level;
                 cell.dataset.count = day.count;
                 cell.dataset.date  = day.date;
@@ -317,14 +376,11 @@ function renderHeatmap(container, data, year) {
 }
 
 /**
- * Re-color all heatmap cells when the user toggles dark/light mode.
- * No re-fetch needed.
+ * Re-color handled by CSS classes now (level-0 through level-4).
+ * This function kept for compatibility but no longer needed.
  */
 function recolorHeatmap() {
-    const palette = HEATMAP_COLORS[getTheme()];
-    document.querySelectorAll('.heatmap-cell[data-level]').forEach(cell => {
-        cell.style.backgroundColor = palette[parseInt(cell.dataset.level, 10)];
-    });
+    // Colors now handled via CSS classes
 }
 
 /**
