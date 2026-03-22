@@ -65,7 +65,7 @@ if (mobileMenuToggle && mobileMenu) {
 // ===================
 
 // ⚠️ IMPORTANT: Replace this URL with your deployed Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwDc7nbB4-PAkVL0O0f-i9_AmkZRx_cOf3zjDVCRR24GpEl1nS1Nfc7ErQ6QWX15AkN_g/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRhIWUflHjpSgd-jAFGsoVbcdcHDi-1rbJQY4hxWmNt25Fr9djYUR4zZAAfsQv6GVhqQ/exec';
 
 const contactForm = document.getElementById('contact-form');
 
