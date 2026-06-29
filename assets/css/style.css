@@ -12,7 +12,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
     line-height: 1.6;
     color: #111111;
     background-color: #ffffff;
@@ -308,7 +308,7 @@ body {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     transition: var(--transition);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
     color: var(--text-primary);
 }
 
@@ -2976,7 +2976,7 @@ html {
 /* Line 1: "Computer Science" — largest, primary blue */
 .hero-line-cs {
     display: block;
-    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-size: clamp(2.75rem, 6.5vw, 4.5rem);
     font-weight: 800;
     color: #0969da;
     letter-spacing: -0.03em;
@@ -2987,7 +2987,7 @@ html {
 /* Line 2: "Student" — secondary, neutral */
 .hero-line-student {
     display: block;
-    font-size: clamp(1.5rem, 3.25vw, 2.375rem);
+    font-size: clamp(1.875rem, 4vw, 2.875rem);
     font-weight: 600;
     color: #1a1a2e;
     line-height: 1.1;
@@ -2997,7 +2997,7 @@ html {
 /* Line 3: "& Web Developer" — slightly larger than Student, indigo */
 .hero-line-dev {
     display: block;
-    font-size: clamp(1.625rem, 3.5vw, 2.5rem);
+    font-size: clamp(2rem, 4.25vw, 3rem);
     font-weight: 700;
     color: #4f46e5;
     line-height: 1.1;
@@ -3013,6 +3013,23 @@ html {
     letter-spacing: 0.03em;
 }
 
+/* BSCS — green (CS identity) */
+.subtitle-bscs {
+    color: #2da44e;
+    font-weight: 600;
+}
+
+/* QCU name — primary blue */
+.subtitle-qcu {
+    color: #0969da;
+}
+
+/* ── Description size ── */
+.hero-description {
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
 /* ── Dark mode ── */
 [data-theme="dark"] .hero-status-pill {
     color: #3fb950;
@@ -3026,6 +3043,8 @@ html {
 [data-theme="dark"] .hero-line-student { color: #e6edf3; }
 [data-theme="dark"] .hero-line-dev     { color: #818cf8; }
 [data-theme="dark"] .hero-subtitle     { color: #79c0ff; }
+[data-theme="dark"] .subtitle-bscs    { color: #3fb950; }
+[data-theme="dark"] .subtitle-qcu     { color: #79c0ff; }
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
