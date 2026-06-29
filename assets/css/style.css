@@ -2491,6 +2491,39 @@ html {
     gap: 2px;
 }
 
+/* ===================
+   PREFERS-REDUCED-MOTION
+   =================== */
+@media (prefers-reduced-motion: reduce) {
+    .float-animation,
+    .float-animation-small,
+    .morph-float,
+    .profile-glow,
+    .profile-border-ring,
+    .decorative-circle,
+    .contact-header,
+    .about-header {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .card:hover,
+    .glass-card:hover,
+    .project-card:hover,
+    .certificate-card:hover,
+    .hover-lift:hover,
+    .hover-scale:hover {
+        transform: none !important;
+    }
+}
+
+/* Dark mode support for elevated button opacity */
+[data-theme="dark"] .bg-white\/70 {
+    background: rgba(22, 27, 34, 0.72) !important;
+    border-color: var(--border) !important;
+}
+
 /* ── Cells ── */
 .heatmap-cell {
     width: 12px;
