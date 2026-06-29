@@ -1267,6 +1267,7 @@ button, a, input, textarea, select {
     align-items: center;
     justify-content: center;
     flex: 1;
+    cursor: pointer;
 }
 
 .project-btn-primary {
@@ -1400,6 +1401,12 @@ button, a, input, textarea, select {
     overflow: hidden;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+.project-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .project-btn::before {
