@@ -2933,7 +2933,7 @@ html {
 }
 
 /* ════════════════════════════════════════
-   HERO IDENTITY — modern redesign
+   HERO IDENTITY — typography redesign
    ════════════════════════════════════════ */
 
 /* Availability status pill */
@@ -2966,17 +2966,54 @@ html {
     100% { box-shadow: 0 0 0 0 rgba(45, 164, 78, 0); }
 }
 
-/* Compact subtitle below H1 (replaces kicker + subrole) */
-.hero-subtitle {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    margin-top: 6px;
-    margin-bottom: 24px;
-    letter-spacing: 0.02em;
+/* ── Three-line hero heading ── */
+.hero-heading {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
 }
 
-/* Dark mode */
+/* Line 1: "Computer Science" — largest, primary blue */
+.hero-line-cs {
+    display: block;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 800;
+    color: #0969da;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    margin-bottom: 4px;
+}
+
+/* Line 2: "Student" — secondary, neutral */
+.hero-line-student {
+    display: block;
+    font-size: clamp(1.5rem, 3.25vw, 2.375rem);
+    font-weight: 600;
+    color: #1a1a2e;
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+/* Line 3: "& Web Developer" — slightly larger than Student, indigo */
+.hero-line-dev {
+    display: block;
+    font-size: clamp(1.625rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: #4f46e5;
+    line-height: 1.1;
+}
+
+/* ── Subtitle ── */
+.hero-subtitle {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #3b6ea5;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    letter-spacing: 0.03em;
+}
+
+/* ── Dark mode ── */
 [data-theme="dark"] .hero-status-pill {
     color: #3fb950;
     background: rgba(57, 211, 83, 0.12);
@@ -2985,9 +3022,12 @@ html {
 
 [data-theme="dark"] .hero-status-dot { background: #3fb950; }
 
-[data-theme="dark"] .hero-subtitle { color: #8b949e; }
+[data-theme="dark"] .hero-line-cs      { color: #3fb950; }
+[data-theme="dark"] .hero-line-student { color: #e6edf3; }
+[data-theme="dark"] .hero-line-dev     { color: #818cf8; }
+[data-theme="dark"] .hero-subtitle     { color: #79c0ff; }
 
-/* Respect reduced motion */
+/* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
     .hero-status-dot { animation: none; }
 }
