@@ -156,6 +156,14 @@
     }
 }
 
+/* Contact section mobile spacing */
+@media (max-width: 768px) {
+    #contact { padding-top: 3rem; padding-bottom: 3rem; }
+    .contact-header { margin-bottom: 2rem !important; }
+    #contact .grid { gap: 2rem; }
+    #contact h2 { font-size: 2rem !important; line-height: 1.2; }
+}
+
 /* Small Mobile */
 @media (max-width: 480px) {
     .container {
@@ -184,7 +192,7 @@
     }
     
     .hero-description {
-        font-size: 1rem;
+        font-size: 0.875rem;
     }
     
     .skill-card {
@@ -220,5 +228,17 @@
     .timeline-item {
         flex-direction: column;
         text-align: center;
+    }
+
+    /* Center status pill on small screens */
+    #contact { padding-left: 1rem; padding-right: 1rem; }
+    .hero-status-pill {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Hide extra floating icons on very small screens to prevent overflow */
+    .hero-floating-icon:not(.hero-floating-icon--top):not(.hero-floating-icon--bottom) {
+        display: none;
     }
 }

@@ -1849,7 +1849,7 @@ html {
     font-weight: 600;
     color: white;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.28s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -1863,7 +1863,8 @@ html {
 }
 
 .contact-submit-btn:active {
-    transform: translateY(-1px);
+    transform: scale(0.97);
+    transition: transform 100ms ease-out;
 }
 
 .contact-submit-btn::before {
@@ -3019,14 +3020,14 @@ html {
     font-weight: 600;
 }
 
-/* QCU name — primary blue */
-.subtitle-qcu {
-    color: #0969da;
-}
+/* QCU name — tri-color (Quezon=blue, City=red, University=gold) */
+.subtitle-qcu-quezon  { color: #0057a8; font-weight: 600; }
+.subtitle-qcu-city    { color: #c8102e; font-weight: 600; }
+.subtitle-qcu-univ    { color: #a07800; font-weight: 600; }
 
 /* ── Description size ── */
 .hero-description {
-    font-size: 1rem;
+    font-size: 0.875rem;
     line-height: 1.75;
 }
 
@@ -3043,10 +3044,80 @@ html {
 [data-theme="dark"] .hero-line-student { color: #e6edf3; }
 [data-theme="dark"] .hero-line-dev     { color: #818cf8; }
 [data-theme="dark"] .hero-subtitle     { color: #79c0ff; }
-[data-theme="dark"] .subtitle-bscs    { color: #3fb950; }
-[data-theme="dark"] .subtitle-qcu     { color: #79c0ff; }
+[data-theme="dark"] .subtitle-bscs         { color: #3fb950; }
+[data-theme="dark"] .subtitle-qcu-quezon  { color: #60a5fa; }
+[data-theme="dark"] .subtitle-qcu-city    { color: #f87171; }
+[data-theme="dark"] .subtitle-qcu-univ    { color: #fbbf24; }
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
     .hero-status-dot { animation: none; }
+}
+
+/* ═══════════════════════════════════════
+   PAGE LOADER BAR
+═══════════════════════════════════════ */
+#page-loader {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 30%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    z-index: 99999;
+    transition: width 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.5s ease;
+    pointer-events: none;
+}
+#page-loader.complete { width: 100%; opacity: 0; }
+@media (prefers-reduced-motion: reduce) { #page-loader { display: none; } }
+
+/* ═══════════════════════════════════════
+   PROFILE IMAGE SKELETON
+═══════════════════════════════════════ */
+.profile-skeleton {
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+    transition: opacity 0.4s ease;
+}
+.profile-skeleton.loaded { opacity: 0 !important; pointer-events: none; animation: none !important; }
+@keyframes skeleton-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.45; }
+}
+@media (prefers-reduced-motion: reduce) { .profile-skeleton { animation: none; } }
+
+/* ═══════════════════════════════════════
+   BUTTON ACTIVE STATES (Emil Design-Eng)
+═══════════════════════════════════════ */
+.btn-primary:active {
+    transform: scale(0.97) !important;
+    transition: transform 100ms ease-out !important;
+}
+.btn-secondary:active {
+    transform: scale(0.97) !important;
+    transition: transform 100ms ease-out !important;
+}
+.project-btn:active,
+.about-btn-primary:active,
+.about-btn-secondary:active,
+.project-btn-primary:active,
+.project-btn-secondary:active {
+    transform: scale(0.97);
+    transition: transform 100ms ease-out;
+}
+
+/* ═══════════════════════════════════════
+   TECH BADGE ROTATION
+═══════════════════════════════════════ */
+.tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s ease;
+}
+.tech-badge i { font-size: 11px; }
+@media (hover: hover) and (pointer: fine) {
+    .tech-badge:hover {
+        transform: translateY(-2px) scale(1.06);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        cursor: default;
+    }
 }

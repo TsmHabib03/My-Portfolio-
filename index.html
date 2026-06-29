@@ -13,8 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="bg-white text-gray-900 overflow-x-hidden">
+    <!-- Page Loader Bar -->
+    <div id="page-loader" aria-hidden="true"></div>
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,12 +77,6 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center hero-grid-main">
                 <!-- Left Content -->
                 <div class="lg:col-span-5 order-2 lg:order-1 hero-copy">
-                    <!-- Availability status pill -->
-                    <div class="hero-status-pill mb-5">
-                        <span class="hero-status-dot" aria-hidden="true"></span>
-                        Available for internships &amp; freelance projects
-                    </div>
-
                     <!-- Main heading -->
                     <h1 class="hero-heading mb-3">
                         <span class="hero-line-cs">Computer Science</span>
@@ -90,14 +87,20 @@
                     <!-- BSCS subtitle -->
                     <p class="hero-subtitle">
                         1st Year <span class="subtitle-bscs">BSCS</span>
-                        &middot; <span class="subtitle-qcu">Quezon City University</span>
+                        &middot; <span class="subtitle-qcu-quezon">Quezon</span> <span class="subtitle-qcu-city">City</span> <span class="subtitle-qcu-univ">University</span>
                     </p>
 
                     <!-- Description -->
-                    <p class="text-gray-600 text-lg mb-8 max-w-2xl leading-relaxed hero-description">
+                    <p class="text-gray-600 mb-5 max-w-2xl leading-relaxed hero-description">
                         I'm Habib, an 18-year-old BS Computer Science student at Quezon City University. I enjoy building web applications using PHP, JavaScript, MySQL, HTML, CSS, and Java. I've developed projects including school management systems, QR attendance systems, learning management systems, and business websites. My goal is to continue improving my skills and build software that is useful, reliable, and easy to use.
                     </p>
-                    
+
+                    <!-- Availability status pill -->
+                    <div class="hero-status-pill mb-6">
+                        <span class="hero-status-dot" aria-hidden="true"></span>
+                        Available for internships &amp; freelance projects
+                    </div>
+
                     <!-- Action Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 mb-4">
                         <a href="#contact" class="btn-primary hover-scale">
@@ -134,7 +137,8 @@
                                     <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg" aria-label="Habib's profile image">
                                         <!-- Background Mask for Better Integration -->
                                         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-white/20 z-10"></div>
-                                        
+                                        <!-- Profile Skeleton -->
+                                        <div id="profile-skeleton" class="absolute inset-0 rounded-full bg-gray-200 z-20 profile-skeleton" aria-hidden="true"></div>
                                         <!-- Profile Image -->
                                         <img src="assets/images/Habibprofile.jpg" 
                                              alt="Habib" 
@@ -154,13 +158,11 @@
                             </div>
                         </div>
                         
-                        <!-- Floating Tech Icons - Repositioned -->
-                        <div class="absolute -top-2 -right-8 w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg float-animation z-30 hero-floating-icon hero-floating-icon--top">
-                            <i class="fas fa-code text-white text-sm"></i>
-                        </div>
-                        <div class="absolute -bottom-2 -left-8 w-12 h-12 bg-secondary rounded-xl flex items-center justify-center shadow-lg float-animation z-30 hero-floating-icon hero-floating-icon--bottom" style="animation-delay: -1.5s;">
-                            <i class="fas fa-laptop text-white text-sm"></i>
-                        </div>
+                        <!-- Floating Tech Icons — content injected by initFloatingIcons() -->
+                        <div class="absolute -top-2 -right-8 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg float-animation z-30 hero-floating-icon hero-floating-icon--top" style="background:var(--primary)"></div>
+                        <div class="absolute -bottom-2 -left-8 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg float-animation z-30 hero-floating-icon hero-floating-icon--bottom" style="background:var(--secondary);animation-delay:-1.5s"></div>
+                        <div class="absolute -top-2 -left-8 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg float-animation z-30 hero-floating-icon" style="background:#4479A1;animation-delay:-0.75s"></div>
+                        <div class="absolute -bottom-2 -right-8 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg float-animation z-30 hero-floating-icon" style="background:var(--accent);animation-delay:-3s"></div>
 
                         <!-- Status Badges - Repositioned -->
                         <div class="hero-status-badge absolute top-4 left-4 px-2 py-1 backdrop-blur-sm text-xs font-bold rounded-full shadow-md z-30">
@@ -212,12 +214,12 @@
                     <div class="card hover-lift p-4 lg:p-6">
                         <h3 class="text-xs lg:text-sm font-semibold text-gray-500 mb-3 lg:mb-4 tracking-wider uppercase">Tech Stack</h3>
                         <div class="flex flex-wrap gap-1.5 lg:gap-2">
-                            <span class="tech-badge badge-primary text-xs">HTML</span>
-                            <span class="tech-badge badge-secondary text-xs">CSS</span>
-                            <span class="tech-badge badge-accent text-xs">JavaScript</span>
-                            <span class="tech-badge badge-primary text-xs">PHP</span>
-                            <span class="tech-badge badge-secondary text-xs">MySQL</span>
-                            <span class="tech-badge badge-accent text-xs">Java</span>
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-html5" aria-hidden="true"></i>HTML5</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fab fa-css3-alt" aria-hidden="true"></i>CSS3</span>
+                            <span class="tech-badge badge-accent text-xs"><i class="fab fa-js" aria-hidden="true"></i>JavaScript</span>
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-php" aria-hidden="true"></i>PHP</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fas fa-database" aria-hidden="true"></i>MySQL</span>
+                            <span class="tech-badge badge-accent text-xs"><i class="fab fa-java" aria-hidden="true"></i>Java</span>
                         </div>
                     </div>
                     
@@ -1241,7 +1243,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16 contact-header" data-aos="fade-up">
+            <div class="text-center mb-10 contact-header" data-aos="fade-up">
                 <div class="inline-flex items-center space-x-2 mb-6">
                     <div class="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-primary text-sm font-medium rounded-full shadow-lg">
                         <i class="fas fa-envelope mr-2"></i>Contact Me
@@ -1256,7 +1258,7 @@
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
                 <!-- Contact Info Section -->
                 <div class="order-2 lg:order-1 space-y-8" data-aos="fade-right" data-aos-delay="200">
                     <!-- Main Contact Card -->
@@ -1289,8 +1291,8 @@
                                 </div>
                                 <div>
                                     <p class="font-semibold text-gray-900">Phone</p>
-                                    <a href="tel:+639997670753" class="text-gray-600 hover:text-secondary transition-colors duration-300">
-                                        +639997670753
+                                    <a href="tel:+63245491736" class="text-gray-600 hover:text-secondary transition-colors duration-300">
+                                        +63245491736
                                     </a>
                                 </div>
                             </div>
@@ -1440,7 +1442,7 @@
             </div>
 
             <!-- Call to Action -->
-            <div class="mt-20 text-center" data-aos="fade-up" data-aos-delay="600">
+            <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="600">
                 <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-8 max-w-3xl mx-auto shadow-lg">
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Let's Build Something Great Together</h3>
                     <p class="text-gray-700 mb-6 leading-relaxed">
@@ -1478,6 +1480,8 @@
         </div>
     </footer>
 
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- External JavaScript -->
     <script src="assets/js/main.js"></script>
 </body>

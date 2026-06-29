@@ -151,13 +151,111 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('section').forEach(s => observer.observe(s));
 
+// ─── Page Loader ───
+(function() {
+    const loader = document.getElementById('page-loader');
+    if (!loader) return;
+    window.addEventListener('load', () => {
+        loader.style.width = '100%';
+        setTimeout(() => loader.classList.add('complete'), 200);
+        setTimeout(() => loader.remove(), 800);
+    });
+})();
+
 // DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
     document.body.classList.add('loaded');
     initializeYearTabs();
     loadGitHubContributions();
-    console.log('Portfolio website loaded successfully!');
+    initProfileSkeleton();
+    initFloatingIcons();
+    AOS.init({ duration: 550, once: true, easing: 'ease-out-cubic', offset: 60 });
 });
+
+// ─── Profile Image Skeleton ───
+function initProfileSkeleton() {
+    const img = document.querySelector('.hero-profile-image');
+    const skeleton = document.getElementById('profile-skeleton');
+    if (!img || !skeleton) return;
+
+    const hide = () => {
+        skeleton.classList.add('loaded');
+        setTimeout(() => skeleton.remove(), 500);
+    };
+
+    // Already cached — remove immediately with no flash
+    if (img.complete && img.naturalWidth > 0) {
+        skeleton.remove();
+        return;
+    }
+
+    img.addEventListener('load', hide);
+    img.addEventListener('error', () => skeleton.remove());
+}
+
+// ─── Floating Profile Icons (random rotation) ───
+function initFloatingIcons() {
+    const slots = Array.from(document.querySelectorAll('.hero-floating-icon'));
+    if (!slots.length) return;
+
+    const POOL = [
+        { icon: 'fas fa-code',       bg: 'var(--primary)',   label: 'Code'      },
+        { icon: 'fas fa-laptop',     bg: 'var(--secondary)', label: 'Dev'       },
+        { icon: 'fab fa-html5',      bg: '#e34f26',          label: 'HTML5'     },
+        { icon: 'fab fa-css3-alt',   bg: '#1572b6',          label: 'CSS3'      },
+        { icon: 'fab fa-js',         bg: '#b8860b',          label: 'JS'        },
+        { icon: 'fab fa-php',        bg: '#6f5b9e',          label: 'PHP'       },
+        { icon: 'fab fa-java',       bg: '#007396',          label: 'Java'      },
+        { icon: 'fas fa-database',   bg: '#4479A1',          label: 'MySQL'     },
+        { icon: 'fab fa-git-alt',    bg: '#f05032',          label: 'Git'       },
+        { icon: 'fab fa-github',     bg: '#24292e',          label: 'GitHub'    },
+        { icon: 'fab fa-react',      bg: '#0891b2',          label: 'React'     },
+        { icon: 'fab fa-node-js',    bg: '#15803d',          label: 'Node.js'   },
+        { icon: 'fab fa-laravel',    bg: '#ff2d20',          label: 'Laravel'   },
+        { icon: 'fab fa-bootstrap',  bg: '#7952b3',          label: 'Bootstrap' },
+        { icon: 'fab fa-docker',     bg: '#2496ed',          label: 'Docker'    },
+        { icon: 'fab fa-figma',      bg: '#a259ff',          label: 'Figma'     },
+    ];
+
+    const showing = [];
+
+    function pickNext(exclude) {
+        const available = POOL.map((_, i) => i).filter(i => !exclude.includes(i));
+        return available[Math.floor(Math.random() * available.length)];
+    }
+
+    function applyIcon(el, idx) {
+        const t = POOL[idx];
+        el.style.background = t.bg;
+        el.innerHTML = `<i class="${t.icon} text-white" style="font-size:1rem" aria-hidden="true" title="${t.label}"></i>`;
+    }
+
+    // Initial random assignment — each slot gets a unique tech
+    slots.forEach(el => {
+        const idx = pickNext(showing);
+        showing.push(idx);
+        applyIcon(el, idx);
+    });
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Rotate one random slot every 3.2 seconds
+    setInterval(() => {
+        const slotIdx = Math.floor(Math.random() * slots.length);
+        const others = showing.filter((_, i) => i !== slotIdx);
+        const newIdx = pickNext(others);
+        const el = slots[slotIdx];
+
+        // Fade out → swap → fade in
+        el.style.transition = 'opacity 0.35s ease';
+        el.style.opacity = '0';
+        setTimeout(() => {
+            showing[slotIdx] = newIdx;
+            applyIcon(el, newIdx);
+            el.style.opacity = '1';
+        }, 370);
+    }, 3200);
+}
 
 // Smooth hover effects
 document.querySelectorAll('.hover-scale').forEach(element => {
