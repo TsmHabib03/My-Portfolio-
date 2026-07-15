@@ -169,8 +169,77 @@ document.addEventListener('DOMContentLoaded', function() {
     loadGitHubContributions();
     initProfileSkeleton();
     initFloatingIcons();
+    initProjectFilters();
+    initCertCarousel();
     AOS.init({ duration: 550, once: true, easing: 'ease-out-cubic', offset: 60 });
 });
+
+// ─── Project Category Filters ───
+function initProjectFilters() {
+    const tabs  = document.querySelectorAll('#project-filters .filter-tab');
+    const cards = document.querySelectorAll('#projects-grid .project-card');
+    if (!tabs.length || !cards.length) return;
+
+    const countEl = document.querySelector('#project-filters [data-filter="all"] .filter-count');
+    if (countEl) countEl.textContent = `(${cards.length})`;
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const filter = tab.dataset.filter;
+
+            cards.forEach(card => {
+                const match = filter === 'all' || card.dataset.category === filter;
+                card.style.display = match ? '' : 'none';
+            });
+        });
+    });
+}
+
+// ─── Certificate Carousel ───
+function initCertCarousel() {
+    const track    = document.getElementById('cert-track');
+    const dotsWrap = document.getElementById('cert-dots');
+    const prevBtn  = document.getElementById('cert-prev');
+    const nextBtn  = document.getElementById('cert-next');
+    if (!track || !dotsWrap) return;
+
+    const slides = Array.from(track.children);
+    if (!slides.length) return;
+
+    slides.forEach((slide, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'cert-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Go to certificate ${i + 1}`);
+        dot.addEventListener('click', () => {
+            slide.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+        });
+        dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            const visible = entries.filter(e => e.isIntersecting);
+            if (!visible.length) return;
+            const most = visible.reduce((a, b) => (b.intersectionRatio > a.intersectionRatio ? b : a));
+            const idx = slides.indexOf(most.target);
+            dots.forEach(d => d.classList.remove('active'));
+            if (dots[idx]) dots[idx].classList.add('active');
+        }, { root: track, threshold: [0, 0.25, 0.5, 0.75, 1] });
+
+        slides.forEach(s => observer.observe(s));
+    }
+
+    prevBtn?.addEventListener('click', () => {
+        track.scrollBy({ left: -track.clientWidth * 0.85, behavior: 'smooth' });
+    });
+    nextBtn?.addEventListener('click', () => {
+        track.scrollBy({ left: track.clientWidth * 0.85, behavior: 'smooth' });
+    });
+}
 
 // ─── Profile Image Skeleton ───
 function initProfileSkeleton() {

@@ -226,20 +226,8 @@
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/20 relative overflow-hidden">
-        <!-- Background Decoration -->
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-20 left-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-accent/5 rounded-full blur-3xl"></div>
-        </div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 about-header" data-aos="fade-up">
-                <div class="inline-flex items-center space-x-2 mb-6">
-                    <div class="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-primary text-sm font-medium rounded-full shadow-lg">
-                        <i class="fas fa-user mr-2"></i>About Me
-                    </div>
-                </div>
                 <h2 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 relative">
                     Get to Know Me Better
                     <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
@@ -287,7 +275,7 @@
                 <!-- About Content Section -->
                 <div class="order-1 lg:order-2 space-y-8" data-aos="fade-left" data-aos-delay="400">
                     <!-- Story Card -->
-                    <div class="bg-white/40 backdrop-blur-md border border-white/30 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="card p-8">
                         <h3 class="text-2xl font-bold mb-6 text-gray-900 flex items-center">
                             <i class="fas fa-rocket text-primary mr-3"></i>
                             My Journey
@@ -337,55 +325,31 @@
                         </div>
                     </div>
                     
-                    <!-- Stats Grid -->
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="bg-white/30 backdrop-blur-sm border border-white/30 rounded-xl p-4 text-center hover:bg-white/40 transition-all duration-300 group">
-                            <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
-                                <i class="fas fa-calendar text-primary"></i>
-                            </div>
-                            <h4 class="text-2xl font-bold text-primary mb-1">2+</h4>
-                            <p class="text-xs text-gray-600 font-medium">Years Learning</p>
+                    <!-- Stats Row -->
+                    <div class="stats-row">
+                        <div class="stats-row-item">
+                            <h4 class="stats-row-number text-primary">2+</h4>
+                            <p class="stats-row-label"><i class="fas fa-calendar" aria-hidden="true"></i>Years Learning</p>
                         </div>
-                        
-                        <div class="bg-white/30 backdrop-blur-sm border border-white/30 rounded-xl p-4 text-center hover:bg-white/40 transition-all duration-300 group">
-                            <div class="w-10 h-10 bg-secondary/20 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
-                                <i class="fas fa-project-diagram text-secondary"></i>
-                            </div>
-                            <h4 class="text-2xl font-bold text-secondary mb-1">60+</h4>
-                            <p class="text-xs text-gray-600 font-medium">Projects Built</p>
+                        <div class="stats-row-item">
+                            <h4 class="stats-row-number text-secondary">60+</h4>
+                            <p class="stats-row-label"><i class="fas fa-code-branch" aria-hidden="true"></i>Projects Built</p>
                         </div>
-                        
-                        <div class="bg-white/30 backdrop-blur-sm border border-white/30 rounded-xl p-4 text-center hover:bg-white/40 transition-all duration-300 group">
-                            <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
-                                <i class="fas fa-code text-accent"></i>
-                            </div>
-                            <h4 class="text-2xl font-bold text-accent mb-1">6+</h4>
-                            <p class="text-xs text-gray-600 font-medium">Programming Languages</p>
+                        <div class="stats-row-item">
+                            <h4 class="stats-row-number text-accent">6+</h4>
+                            <p class="stats-row-label"><i class="fas fa-code" aria-hidden="true"></i>Languages</p>
                         </div>
                     </div>
-
-
                 </div>
             </div>
             
             <!-- Additional Info Section -->
-            <div class="mt-20 text-center" data-aos="fade-up" data-aos-delay="600">
-                <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-8 max-w-4xl mx-auto shadow-lg">
+            <div class="mt-20" data-aos="fade-up" data-aos-delay="600">
+                <div class="card p-8 max-w-4xl mx-auto goals-card">
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">My Goals & Vision</h3>
-                    <p class="text-gray-700 leading-relaxed mb-6">
-                        I'm in my first year of BS Computer Science at QCU. My goal is to develop stronger skills in software engineering, work on more complex projects, and eventually contribute to a development team. I'm interested in full-stack web development and plan to explore machine learning as I progress through my degree.
+                    <p class="text-gray-700 leading-relaxed mb-0">
+                        I'm in my first year of BS Computer Science at QCU. My goal is to develop stronger skills in software engineering, work on more complex projects, and eventually contribute to a development team. I'm interested in full-stack web development and plan to explore machine learning as I progress through my degree, contributing to open source along the way and staying detail-oriented in everything I ship.
                     </p>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <span class="px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full border border-primary/20">
-                            1st Year BSCS Student
-                        </span>
-                        <span class="px-4 py-2 bg-secondary/10 text-secondary text-sm font-semibold rounded-full border border-secondary/20">
-                            Open Source Contributor
-                        </span>
-                        <span class="px-4 py-2 bg-accent/10 text-accent text-sm font-semibold rounded-full border border-accent/20">
-                            Detail-Oriented
-                        </span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -393,20 +357,8 @@
 
     <!-- Projects Section -->
     <section id="projects" class="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 relative overflow-hidden">
-        <!-- Background Decoration -->
-        <div class="absolute inset-0 opacity-30">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
-        </div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16 project-header">
-                <div class="inline-flex items-center space-x-2 mb-6">
-                    <div class="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-primary text-sm font-medium rounded-full shadow-lg">
-                        <i class="fas fa-rocket mr-2"></i>My Work
-                    </div>
-                </div>
+            <div class="text-center mb-12 project-header">
                 <h2 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 relative">
                     Pinned Projects
                     <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
@@ -415,11 +367,19 @@
                    A collection of projects I've built, including school systems, web apps, and practice projects.
                 </p>
             </div>
-            
+
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="project-filters">
+                <button class="filter-tab active" data-filter="all">All <span class="filter-count"></span></button>
+                <button class="filter-tab" data-filter="systems">Systems</button>
+                <button class="filter-tab" data-filter="web">Web Apps</button>
+                <button class="filter-tab" data-filter="desktop">Desktop</button>
+            </div>
+
             <!-- Projects Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 projects-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 projects-grid" id="projects-grid">
                 <!-- Project Card 1 - REPCORE FITNESS -->
-                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card glass-card group" data-category="systems" data-aos="fade-up" data-aos-delay="100">
                     <!-- Project Image -->
                     <div class="relative h-56 rounded-t-2xl overflow-hidden">
                         <img src="assets/images/REPCORE-FITNESS.png"
@@ -456,6 +416,14 @@
                             A full-stack gym attendance management system built with PHP, MySQL, Tailwind CSS, and JavaScript. Enables QR code-based member check-ins with instant membership verification, automatic denial of expired members, and duplicate scan prevention. Features a real-time analytics dashboard, CSRF protection, rate limiting, and comprehensive audit logging.
                         </p>
 
+                        <div class="project-stack" aria-label="Tech stack">
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-php" aria-hidden="true"></i>PHP</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fas fa-database" aria-hidden="true"></i>MySQL</span>
+                            <span class="tech-badge badge-accent text-xs"><i class="fab fa-js" aria-hidden="true"></i>JavaScript</span>
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-html5" aria-hidden="true"></i>HTML5</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fab fa-css3-alt" aria-hidden="true"></i>CSS3</span>
+                        </div>
+
                         <!-- Project Buttons -->
                         <div class="flex space-x-3">
                             <a href="#" class="project-btn project-btn-primary group/btn">
@@ -471,7 +439,7 @@
                 </div>
 
                 <!-- Project Card 2 - Weather App -->
-                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-card glass-card group" data-category="web" data-aos="fade-up" data-aos-delay="200">
                     <!-- Project Image -->
                     <div class="relative h-56 rounded-t-2xl overflow-hidden">
                         <!-- Teaser Image -->
@@ -513,7 +481,13 @@
                         <p class="text-gray-600 mb-6 leading-relaxed text-sm">
                             This Weather App displays real-time weather information for any city using data from a weather API. Built with HTML, CSS, and JavaScript, it fetches data using an API key to show temperature, weather conditions, and icons in a clean, responsive user interface. Designed for simplicity and quick access to weather updates on any device.
                         </p>
-                        
+
+                        <div class="project-stack" aria-label="Tech stack">
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-html5" aria-hidden="true"></i>HTML5</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fab fa-css3-alt" aria-hidden="true"></i>CSS3</span>
+                            <span class="tech-badge badge-accent text-xs"><i class="fab fa-js" aria-hidden="true"></i>JavaScript</span>
+                        </div>
+
                         <!-- Project Buttons -->
                         <div class="flex space-x-3">
                             <a href="#" class="project-btn project-btn-primary group/btn">
@@ -528,8 +502,8 @@
                     </div>
                 </div>
 
-                <!-- Project Card 2 - Task Management App -->
-                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="300">
+                <!-- Project Card 3 - LearnFlow LMS -->
+                <div class="project-card glass-card group" data-category="systems" data-aos="fade-up" data-aos-delay="300">
                     <!-- Project Image -->
                     <div class="relative h-56 rounded-t-2xl overflow-hidden">
                         <!-- Teaser Image -->
@@ -576,10 +550,16 @@
                         </h3>
                         <p class="text-gray-600 mb-6 leading-relaxed text-sm">
                             LearnFlow is a modern and intuitive LMS for students, teachers, and professionals to learn efficiently and conveniently. It offers a clean platform to access materials, track progress, and enhance knowledge anytime. Currently 90% complete, it already delivers a functional and seamless learning experience.
-
-
                         </p>
-                        
+
+                        <div class="project-stack" aria-label="Tech stack">
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-php" aria-hidden="true"></i>PHP</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fas fa-database" aria-hidden="true"></i>MySQL</span>
+                            <span class="tech-badge badge-accent text-xs"><i class="fab fa-js" aria-hidden="true"></i>JavaScript</span>
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-html5" aria-hidden="true"></i>HTML5</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fab fa-css3-alt" aria-hidden="true"></i>CSS3</span>
+                        </div>
+
                         <!-- Project Buttons -->
                         <div class="flex space-x-3">
                             <a href="#" class="project-btn project-btn-primary group/btn">
@@ -594,8 +574,8 @@
                     </div>
                 </div>
 
-                <!-- Project Card 3 - ACSCCI Attendance Checker -->
-                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="400">
+                <!-- Project Card 4 - ACSCCI Attendance Checker -->
+                <div class="project-card glass-card group" data-category="systems" data-aos="fade-up" data-aos-delay="400">
                     <!-- Project Image -->
                     <div class="relative h-56 rounded-t-2xl overflow-hidden">
                         <!-- Teaser Image -->
@@ -641,6 +621,13 @@
                             A QR code-based attendance management system built for Academy of St. Joseph Claveria, Cagayan Inc. Uses LRN and Employee IDs to generate unique QR codes for fast attendance tracking. Features AM/PM session handling, late detection, real-time dashboard with charts, SMS notifications, and role-based access. Built with PHP 8+, MySQL 8, JavaScript, and Chart.js.
                         </p>
 
+                        <div class="project-stack" aria-label="Tech stack">
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-php" aria-hidden="true"></i>PHP</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fas fa-database" aria-hidden="true"></i>MySQL</span>
+                            <span class="tech-badge badge-accent text-xs"><i class="fab fa-js" aria-hidden="true"></i>JavaScript</span>
+                            <span class="tech-badge badge-primary text-xs"><i class="fas fa-chart-bar" aria-hidden="true"></i>Chart.js</span>
+                        </div>
+
                         <!-- Project Buttons -->
                         <div class="flex space-x-3">
                             <a href="#" class="project-btn project-btn-primary group/btn">
@@ -655,8 +642,8 @@
                     </div>
                 </div>
 
-                <!-- Project Card 4 - SFHS Attendance Checker -->
-                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="500">
+                <!-- Project Card 5 - SFHS Attendance Checker -->
+                <div class="project-card glass-card group" data-category="systems" data-aos="fade-up" data-aos-delay="500">
                     <!-- Project Image -->
                     <div class="relative h-56 rounded-t-2xl overflow-hidden">
                         <!-- Teaser Image -->
@@ -702,6 +689,13 @@
                             An automated QR code attendance system built for San Francisco High School to streamline student monitoring using official LRN identifiers. Features dual-mode scanning (instant & manual), live analytics dashboard with interactive charts, role-based access control, and complete administrative activity logging. Built with PHP 8+, MySQL 8, JavaScript, and Chart.js.
                         </p>
 
+                        <div class="project-stack" aria-label="Tech stack">
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-php" aria-hidden="true"></i>PHP</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fas fa-database" aria-hidden="true"></i>MySQL</span>
+                            <span class="tech-badge badge-accent text-xs"><i class="fab fa-js" aria-hidden="true"></i>JavaScript</span>
+                            <span class="tech-badge badge-primary text-xs"><i class="fas fa-chart-bar" aria-hidden="true"></i>Chart.js</span>
+                        </div>
+
                         <!-- Project Buttons -->
                         <div class="flex space-x-3">
                             <a href="#" class="project-btn project-btn-primary group/btn">
@@ -716,8 +710,8 @@
                     </div>
                 </div>
 
-                <!-- Project Card 5 - AttendEase Attendance Checker -->
-                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="600">
+                <!-- Project Card 6 - AttendEase Attendance Checker -->
+                <div class="project-card glass-card group" data-category="systems" data-aos="fade-up" data-aos-delay="600">
                     <!-- Project Image -->
                     <div class="relative h-56 rounded-t-2xl overflow-hidden">
                         <!-- Teaser Image -->
@@ -763,6 +757,13 @@
                             A research-led QR code attendance system for SFHS using 11-13 digit LRN for Time In/Time Out tracking via camera scan or manual entry. Features real-time Chart.js analytics dashboard, section-based organization, automated CSV reports, Philippine Timezone support, and secure audit trail. Built with PHP 8+ (PDO), MySQL 8, JavaScript (ES6+), and ZXing.
                         </p>
 
+                        <div class="project-stack" aria-label="Tech stack">
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-php" aria-hidden="true"></i>PHP</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fas fa-database" aria-hidden="true"></i>MySQL</span>
+                            <span class="tech-badge badge-accent text-xs"><i class="fab fa-js" aria-hidden="true"></i>JavaScript</span>
+                            <span class="tech-badge badge-primary text-xs"><i class="fas fa-qrcode" aria-hidden="true"></i>ZXing</span>
+                        </div>
+
                         <!-- Project Buttons -->
                         <div class="flex space-x-3">
                             <a href="#" class="project-btn project-btn-primary group/btn">
@@ -777,8 +778,8 @@
                     </div>
                 </div>
 
-                <!-- Project Card 6 - Graham Bytes -->
-                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="700">
+                <!-- Project Card 7 - Graham Bytes -->
+                <div class="project-card glass-card group" data-category="web" data-aos="fade-up" data-aos-delay="700">
                     <!-- Project Image -->
                     <div class="relative h-56 rounded-t-2xl overflow-hidden">
                         <!-- Teaser Image -->
@@ -824,6 +825,13 @@
                             A high-efficiency, zero-cost web solution for the Graham Bytes snack brand featuring a 'Build your Combo' customization engine and E-points loyalty system. Uses Google Sheets as real-time database via Google Apps Script with GitHub Pages hosting. Includes ICT trivia, LocalStorage score tracking, and CSS3 animations.
                         </p>
 
+                        <div class="project-stack" aria-label="Tech stack">
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-html5" aria-hidden="true"></i>HTML5</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fab fa-css3-alt" aria-hidden="true"></i>CSS3</span>
+                            <span class="tech-badge badge-accent text-xs"><i class="fab fa-js" aria-hidden="true"></i>JavaScript</span>
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-google" aria-hidden="true"></i>Apps Script</span>
+                        </div>
+
                         <!-- Project Buttons -->
                         <div class="flex space-x-3">
                             <a href="#" class="project-btn project-btn-primary group/btn">
@@ -838,8 +846,8 @@
                     </div>
                 </div>
 
-                <!-- Project Card 7 - Java To-Do List -->
-                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="800">
+                <!-- Project Card 8 - Java To-Do List -->
+                <div class="project-card glass-card group" data-category="desktop" data-aos="fade-up" data-aos-delay="800">
                     <!-- Project Image -->
                     <div class="relative h-56 rounded-t-2xl overflow-hidden">
                         <!-- Teaser Image -->
@@ -879,6 +887,11 @@
                             A standalone desktop task management application built with Java Swing GUI toolkit. Features dynamic task addition, completion tracking with visual strikethrough effects, and real-time deletion. Implements OOP principles with modular architecture and event-driven programming using ActionListeners. Developed with Java 8+, Swing, and AWT.
                         </p>
 
+                        <div class="project-stack" aria-label="Tech stack">
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-java" aria-hidden="true"></i>Java</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fas fa-desktop" aria-hidden="true"></i>Swing / AWT</span>
+                        </div>
+
                         <!-- Project Buttons -->
                         <div class="flex space-x-3">
                             <a href="#" class="project-btn project-btn-primary group/btn">
@@ -894,7 +907,7 @@
                 </div>
 
                 <!-- Project Card 9 - Event Registration with QR Tickets -->
-                <div class="project-card glass-card group" data-aos="fade-up" data-aos-delay="900">
+                <div class="project-card glass-card group" data-category="web" data-aos="fade-up" data-aos-delay="900">
                     <!-- Project Image -->
                     <div class="relative h-56 rounded-t-2xl overflow-hidden">
                         <img src="assets/images/Event-Registration.png"
@@ -931,6 +944,13 @@
                             A serverless event registration system combining Google Apps Script APIs with vanilla JavaScript to enable seamless attendee check-in via QR code scanning. Features automatic ticket generation, real-time attendance tracking, and a mobile-responsive admin dashboard that exports attendance reports. Built with zero-cost architecture using Google Sheets as database and no external frameworks.
                         </p>
 
+                        <div class="project-stack" aria-label="Tech stack">
+                            <span class="tech-badge badge-primary text-xs"><i class="fab fa-js" aria-hidden="true"></i>JavaScript</span>
+                            <span class="tech-badge badge-secondary text-xs"><i class="fab fa-html5" aria-hidden="true"></i>HTML5</span>
+                            <span class="tech-badge badge-accent text-xs"><i class="fab fa-css3-alt" aria-hidden="true"></i>CSS3</span>
+                            <span class="tech-badge badge-primary text-xs"><i class="fas fa-qrcode" aria-hidden="true"></i>QR Code</span>
+                        </div>
+
                         <!-- Project Buttons -->
                         <div class="flex space-x-3">
                             <a href="#" class="project-btn project-btn-primary group/btn">
@@ -959,21 +979,9 @@
 
     <!-- GitHub Contributions Section -->
     <section id="contributions" class="contrib-section py-20 relative overflow-hidden">
-        <!-- Background Decoration -->
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-10 left-10 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-10 right-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl"></div>
-        </div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <!-- Section Header -->
             <div class="text-center mb-12">
-                <div class="inline-flex items-center space-x-2 mb-6">
-                    <div class="px-4 py-2 bg-green-500/10 backdrop-blur-sm border border-green-500/20 text-green-400 text-sm font-medium rounded-full shadow-lg">
-                        <i class="fab fa-github mr-2"></i>Coding Activity
-                    </div>
-                </div>
                 <h2 class="text-5xl md:text-6xl font-bold mb-6 contrib-heading relative">
                     GitHub Contributions
                     <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
@@ -1065,20 +1073,8 @@
 
     <!-- Certificates Section -->
     <section id="certificates" class="py-20 bg-gradient-to-br from-white via-blue-50/30 to-gray-50 relative overflow-hidden">
-        <!-- Background Decoration -->
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-20 right-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-20 left-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
-        </div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="inline-flex items-center space-x-2 mb-6">
-                    <div class="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-accent text-sm font-medium rounded-full shadow-lg">
-                        <i class="fas fa-award mr-2"></i>Achievements
-                    </div>
-                </div>
                 <h2 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 relative">
                     Certificates & Awards
                     <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-28 h-1 bg-gradient-to-r from-accent to-primary rounded-full"></div>
@@ -1088,9 +1084,10 @@
                 </p>
             </div>
 
-            <!-- Certificates Grid - Image-Based Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                
+            <!-- Certificates Carousel -->
+            <div class="cert-carousel max-w-5xl mx-auto">
+                <div class="cert-track" id="cert-track">
+
                 <!-- Certificate Card 1 - Computer Literacy -->
                     <div class="certificate-card group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
                     <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
@@ -1108,17 +1105,11 @@
                                     View Full Size
                                 </a>
                             </div>
-                            <!-- Status Badge -->
-                            <div class="absolute top-4 left-4">
-                                <span class="px-3 py-1.5 bg-secondary/90 backdrop-blur-sm text-white text-xs font-bold rounded-full shadow-lg">
-                                    <i class="fas fa-check-circle mr-1"></i>Verified
-                                </span>
-                            </div>
                         </div>
                         <!-- Certificate Info -->
                         <div class="p-5 bg-white">
                             <div class="flex items-center justify-between mb-3">
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-semibold rounded-full">
+                                <span class="cert-tag cert-tag-secondary">
                                     Computer Literacy
                                 </span>
                                 <span class="text-gray-400 text-sm font-medium">
@@ -1128,10 +1119,11 @@
                             <h3 class="text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-secondary transition-colors duration-300">
                                 Certificate of Completion – Computer Literacy Training
                             </h3>
-                            <p class="text-gray-500 text-sm">
+                            <p class="text-gray-500 text-sm mb-2">
                                 <i class="fas fa-building mr-1.5 text-gray-400"></i>
                                 Unitech Educational Program Corp. & AICS
                             </p>
+                            <p class="cert-verified"><i class="fas fa-circle-check" aria-hidden="true"></i>Verified credential</p>
                         </div>
                     </div>
                 </div>
@@ -1153,17 +1145,11 @@
                                     View Full Size
                                 </a>
                             </div>
-                            <!-- Status Badge -->
-                            <div class="absolute top-4 left-4">
-                                <span class="px-3 py-1.5 bg-primary/90 backdrop-blur-sm text-white text-xs font-bold rounded-full shadow-lg">
-                                    <i class="fas fa-check-circle mr-1"></i>Verified
-                                </span>
-                            </div>
                         </div>
                         <!-- Certificate Info -->
                         <div class="p-5 bg-white">
                             <div class="flex items-center justify-between mb-3">
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">
+                                <span class="cert-tag cert-tag-primary">
                                     Web Development
                                 </span>
                                 <span class="text-gray-400 text-sm font-medium">
@@ -1173,31 +1159,31 @@
                             <h3 class="text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-primary transition-colors duration-300">
                                 NC III – Web Development (TESDA)
                             </h3>
-                            <p class="text-gray-500 text-sm">
+                            <p class="text-gray-500 text-sm mb-2">
                                 <i class="fas fa-building mr-1.5 text-gray-400"></i>
                                 Technical Education and Skills Development Authority
                             </p>
+                            <p class="cert-verified"><i class="fas fa-circle-check" aria-hidden="true"></i>Verified credential</p>
                         </div>
                     </div>
                 </div>
 
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="cert-carousel-controls">
+                    <button class="cert-nav-btn" id="cert-prev" aria-label="Previous certificate"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <div class="cert-dots" id="cert-dots"></div>
+                    <button class="cert-nav-btn" id="cert-next" aria-label="Next certificate"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
             </div>
 
             <!-- Add More Certificates Note -->
-            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="300">
-                <div class="cert-note-banner inline-flex flex-col sm:flex-row items-center gap-4 px-6 py-4 backdrop-blur-sm rounded-2xl">
-                    <div class="flex items-center gap-2 cert-note-text">
-                        <i class="fas fa-graduation-cap cert-note-icon"></i>
-                        <span class="font-medium">Continuously learning and earning certifications</span>
-                    </div>
-                    <div class="hidden sm:block w-px h-6 cert-note-divider"></div>
-                    <a href="https://github.com/TsmHabib03" target="_blank" rel="noopener noreferrer"
-                       class="cert-note-link font-semibold hover:underline flex items-center gap-1">
-                        <i class="fab fa-github"></i>
-                        View My Progress
-                    </a>
-                </div>
-            </div>
+            <p class="cert-note" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                Continuously learning and earning certifications &middot;
+                <a href="https://github.com/TsmHabib03" target="_blank" rel="noopener noreferrer" class="cert-note-link">View my progress on GitHub</a>
+            </p>
         </div>
     </section>
 
@@ -1409,25 +1395,12 @@
                 </div>
             </div>
 
-            <!-- Call to Action -->
-            <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="600">
-                <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-8 max-w-3xl mx-auto shadow-lg">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Let's Build Something Great Together</h3>
-                    <p class="text-gray-700 mb-6 leading-relaxed">
-                        Open to web development work, internship opportunities, and project collaborations.
-                    </p>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <span class="px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full border border-primary/20">
-                            <i class="fas fa-handshake mr-2"></i>Collaborative
-                        </span>
-                        <span class="px-4 py-2 bg-secondary/10 text-secondary text-sm font-semibold rounded-full border border-secondary/20">
-                            <i class="fas fa-list-check mr-2"></i>Detail-Oriented
-                        </span>
-                        <span class="px-4 py-2 bg-accent/10 text-accent text-sm font-semibold rounded-full border border-accent/20">
-                            <i class="fas fa-shield-halved mr-2"></i>Reliable
-                        </span>
-                    </div>
-                </div>
+            <!-- Closing Statement -->
+            <div class="mt-16 closing-statement" data-aos="fade-up" data-aos-delay="600">
+                <h3 class="closing-heading">Let's Build Something Great Together</h3>
+                <p class="closing-body">
+                    Open to web development work, internship opportunities, and project collaborations. I'm collaborative, detail-oriented, and reliable when I commit to something.
+                </p>
             </div>
         </div>
     </section>
