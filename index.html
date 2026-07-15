@@ -46,13 +46,6 @@
                     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
                         <i class="fas fa-moon"></i>
                     </button>
-                    
-                   
-                    
-                    <div class="px-3 py-1 bg-green-50 text-secondary text-xs font-medium rounded-full border border-green-100 available-badge">
-                        <span class="w-2 h-2 bg-secondary rounded-full inline-block mr-2"></span>
-                        Available
-                    </div>
                     <button id="mobile-menu-toggle" class="md:hidden text-gray-600 focus:outline-none mobile-menu-button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
@@ -95,11 +88,11 @@
                         I'm Habib, an 18-year-old BS Computer Science student at Quezon City University. I enjoy building web applications using PHP, JavaScript, MySQL, HTML, CSS, and Java. I've developed projects including school management systems, QR attendance systems, learning management systems, and business websites. My goal is to continue improving my skills and build software that is useful, reliable, and easy to use.
                     </p>
 
-                    <!-- Availability status pill -->
-                    <div class="hero-status-pill mb-6">
-                        <span class="hero-status-dot" aria-hidden="true"></span>
-                        Available for internships &amp; freelance projects
-                    </div>
+                    <!-- Availability note -->
+                    <p class="hero-availability mb-6">
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        Open to internships and freelance work
+                    </p>
 
                     <!-- Action Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 mb-4">
@@ -163,21 +156,6 @@
                         <div class="absolute -bottom-2 -left-8 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg float-animation z-30 hero-floating-icon hero-floating-icon--bottom" style="background:var(--secondary);animation-delay:-1.5s"></div>
                         <div class="absolute -top-2 -left-8 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg float-animation z-30 hero-floating-icon" style="background:#4479A1;animation-delay:-0.75s"></div>
                         <div class="absolute -bottom-2 -right-8 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg float-animation z-30 hero-floating-icon" style="background:var(--accent);animation-delay:-3s"></div>
-
-                        <!-- Status Badges - Repositioned -->
-                        <div class="hero-status-badge absolute top-4 left-4 px-2 py-1 backdrop-blur-sm text-xs font-bold rounded-full shadow-md z-30">
-                            <div class="flex items-center space-x-1">
-                                <div class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                                <span>Portfolio</span>
-                            </div>
-                        </div>
-
-                        <div class="hero-status-badge hero-status-available absolute top-4 right-4 px-2 py-1 backdrop-blur-sm text-xs font-bold rounded-full shadow-md z-30">
-                            <div class="flex items-center space-x-1">
-                                <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
-                                <span>Available</span>
-                            </div>
-                        </div>
 
                         <!-- Decorative Elements - Repositioned -->
                         <div class="absolute top-1/4 -left-12 w-6 h-6 bg-accent/20 rounded-full blur-sm"></div>
@@ -288,14 +266,6 @@
                                     
                                     <!-- Image Overlay -->
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                                    
-                                    <!-- Status Badge -->
-                                    <div class="absolute top-4 right-4">
-                                        <div class="px-3 py-1 bg-secondary/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full border border-white/20 shadow-lg">
-                                            <i class="fas fa-circle mr-1 text-xs animate-pulse"></i>
-                                            Available for Work
-                                        </div>
-                                    </div>
                                 </div>
                                 
                                 <!-- Profile Info -->
@@ -305,13 +275,11 @@
                                 </div>
                             </div>
                             
-                            <!-- Floating Elements -->
-                            <div class="absolute -top-4 -right-4 w-16 h-16 bg-primary/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg float-animation">
-                                <i class="fas fa-graduation-cap text-white text-xl"></i>
-                            </div>
-                            <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-accent/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg float-animation" style="animation-delay: -1s;">
-                                <i class="fas fa-code text-white text-xl"></i>
-                            </div>
+                            <!-- Floating Tech Icons — content injected by initFloatingIcons() -->
+                            <div class="absolute -top-4 -right-4 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg float-animation backdrop-blur-sm hero-floating-icon" style="background:var(--primary)"></div>
+                            <div class="absolute -bottom-4 -left-4 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg float-animation backdrop-blur-sm hero-floating-icon" style="background:var(--accent);animation-delay:-1s"></div>
+                            <div class="absolute -top-4 -left-4 w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg float-animation backdrop-blur-sm hero-floating-icon" style="background:var(--secondary);animation-delay:-2s"></div>
+                            <div class="absolute -bottom-4 -right-4 w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg float-animation backdrop-blur-sm hero-floating-icon" style="background:#4479A1;animation-delay:-2.5s"></div>
                         </div>
                     </div>
                 </div>
@@ -1465,17 +1433,46 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-50 py-12 border-t border-gray-200">
+    <footer class="site-footer py-14">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="flex items-center justify-center space-x-2 mb-4">
-                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                        <i class="fas fa-code text-white text-sm"></i>
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-10 pb-8 footer-top">
+                <div class="max-w-xs">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-code text-white text-sm"></i>
+                        </div>
+                        <span class="text-lg font-semibold text-gray-900">Habib Jaudian</span>
                     </div>
-                    <span class="text-xl font-semibold text-gray-900">Habib Portfolio</span>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        BSCS student at Quezon City University, building web apps with PHP, JavaScript, and MySQL.
+                    </p>
                 </div>
-                <p class="text-gray-600 mb-4">Building practical web applications.</p>
-                <p class="text-sm text-gray-500">&copy; 2026 Habib. All rights reserved.</p>
+
+                <div class="flex gap-12 sm:gap-16 footer-links">
+                    <div>
+                        <h3 class="footer-heading">Navigate</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#about" class="footer-link">About</a></li>
+                            <li><a href="#projects" class="footer-link">Projects</a></li>
+                            <li><a href="#certificates" class="footer-link">Certificates</a></li>
+                            <li><a href="#contact" class="footer-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="footer-heading">Elsewhere</h3>
+                        <div class="flex gap-2">
+                            <a href="https://github.com/TsmHabib03" target="_blank" rel="noopener noreferrer" aria-label="Habib's GitHub profile" class="footer-social"><i class="fab fa-github" aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/share/16sbZWKoU5/?mibextid=qi2Omg" target="_blank" rel="noopener noreferrer" aria-label="Habib's Facebook profile" class="footer-social"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/tsmhabib03?igsh=MWFoaTBnOXcxZ3dqdg==" target="_blank" rel="noopener noreferrer" aria-label="Habib's Instagram profile" class="footer-social"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                            <a href="https://www.tiktok.com/@tsmhabib03?_t=ZS-8yESSirCSDC&_r=1" target="_blank" rel="noopener noreferrer" aria-label="Habib's TikTok profile" class="footer-social"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-gray-200 text-sm text-gray-500 footer-bottom">
+                <p>&copy; 2026 Habib Jaudian. All rights reserved.</p>
+                <a href="#home" class="footer-back-top">Back to top <i class="fas fa-arrow-up" aria-hidden="true"></i></a>
             </div>
         </div>
     </footer>
