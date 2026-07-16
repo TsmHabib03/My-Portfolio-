@@ -25,8 +25,8 @@ const CONFIG = {
   // Your Gmail address to receive notifications
   emailTo: 'jaudianhabib879@gmail.com',
 
-  // Email subject line (NO EMOJIS - professional SaaS style)
-  emailSubject: '[Portfolio] New Contact Form Submission',
+  // Email subject prefix (final subject: "[Portfolio] {subject} — {name}")
+  emailSubjectPrefix: '[Portfolio]',
 
   // Google Sheet name (will be created if doesn't exist)
   sheetName: 'Contact Form Submissions',
@@ -197,9 +197,26 @@ function saveToSheet(data) {
 // ═══════════════════════════════════════════════════════════
 
 /**
- * Sends ultra-modern HTML email notification
- * Design: Contemporary frontend aesthetic with SVG icons
- * Compatible with Gmail, Outlook, Apple Mail
+ * Escapes user-supplied text for safe interpolation into HTML.
+ */
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/**
+ * Sends the HTML email notification.
+ * Design: compact "VS Code editor window" card in two variants —
+ *   dark  = Tokyo Night ("Night")
+ *   light = Tokyo Night Light (default)
+ * The variant follows the theme the visitor was using on the site.
+ * Table-based layout, all styles inline, no gradients, no remote
+ * images — renders correctly in Gmail, Outlook, and Apple Mail
+ * even with images blocked.
  */
 function sendEmailNotification(data) {
   try {
@@ -211,233 +228,140 @@ function sendEmailNotification(data) {
     );
     const isDarkTheme = String(data.theme || '').toLowerCase() === 'dark';
 
+    // Tokyo Night ("Night") — VS Code dark theme
+    // Tokyo Night Light — VS Code light theme (default)
     const theme = isDarkTheme
       ? {
-          pageBg: '#0d1117',
-          pageGradient: 'linear-gradient(135deg, #0d1117 0%, #111827 100%)',
-          shellBg: '#0d1117',
-          shellBorder: '#30363d',
-          shellShadow: '0 24px 60px rgba(0, 0, 0, 0.45)',
-          heroBg: 'linear-gradient(135deg, #161b22 0%, #0d1117 100%)',
-          heroAccent: '#58a6ff',
-          heroText: '#f0f6fc',
-          heroSubtext: '#8b949e',
-          muted: '#8b949e',
-          text: '#e6edf3',
-          title: '#f0f6fc',
-          surface: 'rgba(22, 27, 34, 0.92)',
-          surfaceSolid: '#161b22',
-          surfaceAlt: '#0f1720',
-          border: '#30363d',
-          cardGradient: 'linear-gradient(135deg, rgba(88,166,255,0.10) 0%, rgba(22,27,34,0.96) 100%)',
-          pillBg: 'rgba(88,166,255,0.14)',
-          pillText: '#79c0ff',
-          statusBg: '#111827',
-          statusText: '#c9d1d9',
-          primary: '#58a6ff',
-          secondary: '#1f6feb',
-          success: '#3fb950',
-          messageBg: '#0d1117',
-          messageBorder: '#58a6ff',
-          footerBg: 'linear-gradient(135deg, #161b22 0%, #0d1117 100%)',
-          footerText: '#8b949e',
-          buttonText: '#0d1117',
-          secondaryButtonBg: '#161b22',
-          secondaryButtonText: '#e6edf3',
-          secondaryButtonBorder: '#30363d'
+          name: 'Tokyo Night',
+          pageBg: '#16161e',
+          cardBg: '#1a1b26',
+          chromeBg: '#1f2335',
+          panelBg: '#16161e',
+          border: '#3b4261',
+          borderSubtle: '#292e42',
+          text: '#c0caf5',
+          textSecondary: '#a9b1d6',
+          muted: '#8189af',
+          blue: '#7aa2f7',
+          green: '#9ece6a',
+          orange: '#ff9e64',
+          dotRed: '#f7768e',
+          dotYellow: '#e0af68',
+          dotGreen: '#9ece6a',
+          buttonBg: '#7aa2f7',
+          buttonText: '#1a1b26'
         }
       : {
-          pageBg: '#f8fbff',
-          pageGradient: 'linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%)',
-          shellBg: 'rgba(255,255,255,0.92)',
-          shellBorder: '#dbeafe',
-          shellShadow: '0 24px 60px rgba(37, 99, 235, 0.12)',
-          heroBg: 'linear-gradient(135deg, #ffffff 0%, #eff6ff 100%)',
-          heroAccent: '#2563eb',
-          heroText: '#0f172a',
-          heroSubtext: '#475569',
-          muted: '#64748b',
-          text: '#334155',
-          title: '#0f172a',
-          surface: 'rgba(255,255,255,0.88)',
-          surfaceSolid: '#ffffff',
-          surfaceAlt: '#f8fbff',
-          border: '#dbeafe',
-          cardGradient: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(239,246,255,0.95) 100%)',
-          pillBg: 'rgba(37,99,235,0.10)',
-          pillText: '#1d4ed8',
-          statusBg: '#eff6ff',
-          statusText: '#1e3a8a',
-          primary: '#2563eb',
-          secondary: '#1d4ed8',
-          success: '#16a34a',
-          messageBg: '#f8fbff',
-          messageBorder: '#60a5fa',
-          footerBg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
-          footerText: '#475569',
-          buttonText: '#ffffff',
-          secondaryButtonBg: '#ffffff',
-          secondaryButtonText: '#1e293b',
-          secondaryButtonBorder: '#bfdbfe'
+          name: 'Tokyo Night Light',
+          pageBg: '#d6d8df',
+          cardBg: '#e6e7ed',
+          chromeBg: '#dfe0e6',
+          panelBg: '#ffffff',
+          border: '#c1c2c7',
+          borderSubtle: '#d1d3da',
+          text: '#343b59',
+          textSecondary: '#565a70',
+          muted: '#5f6379',
+          blue: '#2959aa',
+          green: '#385f0d',
+          orange: '#965027',
+          dotRed: '#8c4351',
+          dotYellow: '#8f5e15',
+          dotGreen: '#385f0d',
+          buttonBg: '#2959aa',
+          buttonText: '#ffffff'
         };
 
-    const avatarUrl = data.profileImageUrl || data.avatarUrl || 'https://raw.githubusercontent.com/TsmHabib03/My-Portfolio-/main/assets/images/Habibprofile.jpg';
-    const subjectText = data.subject || 'General Inquiry';
-    const safeMessage = data.message || 'No message content provided';
+    // Escape every user-supplied value before it touches HTML
+    const safeFirst   = escapeHtml(data.firstName || 'Sender');
+    const safeName    = escapeHtml(fullName);
+    const safeEmail   = escapeHtml(data.email || '');
+    const safeSubject = escapeHtml(data.subject || 'General Inquiry');
+    const safeMessage = escapeHtml(data.message || 'No message content provided');
+
+    const mono = "Consolas, 'SF Mono', Menlo, Monaco, monospace";
+    const sans = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
+
+    const subjectLine = `${CONFIG.emailSubjectPrefix} ${data.subject || 'General Inquiry'} — ${fullName}`;
 
     const htmlBody = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Portfolio Inquiry</title>
-  <meta name="color-scheme" content="light dark">
-  <meta name="supported-color-schemes" content="light dark">
+  <title>New portfolio message</title>
+  <meta name="color-scheme" content="${isDarkTheme ? 'dark' : 'light'}">
+  <meta name="supported-color-schemes" content="${isDarkTheme ? 'dark' : 'light'}">
 </head>
-<body style="margin:0; padding:0; background:${theme.pageBg}; background-image:${theme.pageGradient}; font-family:Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; color:${theme.text};">
-  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; background:${theme.pageBg}; background-image:${theme.pageGradient};">
+<body style="margin:0; padding:0; background-color:${theme.pageBg}; font-family:${sans}; color:${theme.text};">
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">${safeFirst} sent you a message via your portfolio &mdash; ${safeSubject}</div>
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:${theme.pageBg};">
     <tr>
-      <td align="center" style="padding:32px 12px;">
-        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:680px; width:100%; background:${theme.shellBg}; border:1px solid ${theme.shellBorder}; border-radius:28px; overflow:hidden; box-shadow:${theme.shellShadow};">
+      <td align="center" style="padding:32px 16px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:560px; width:100%; background-color:${theme.cardBg}; border:1px solid ${theme.border}; border-radius:10px;">
 
+          <!-- Editor chrome -->
           <tr>
-            <td style="padding:28px 24px; background:${theme.heroBg}; border-bottom:1px solid ${theme.border};">
+            <td style="padding:13px 20px; background-color:${theme.chromeBg}; border-bottom:1px solid ${theme.borderSubtle}; border-radius:10px 10px 0 0;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr>
-                  <td style="width:76px; vertical-align:middle; padding-right:16px;">
-                    <div style="width:64px; height:64px; border-radius:999px; background:linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%); border:3px solid rgba(255,255,255,0.22); overflow:hidden; text-align:center;">
-                      <img src="${avatarUrl}" alt="Habib Avatar" width="64" height="64" style="display:block; width:64px; height:64px; border:0; outline:none; text-decoration:none; object-fit:cover;">
-                    </div>
+                  <td width="60" style="vertical-align:middle; line-height:10px;">
+                    <span style="display:inline-block; width:10px; height:10px; border-radius:10px; background-color:${theme.dotRed};">&nbsp;</span>
+                    <span style="display:inline-block; width:10px; height:10px; border-radius:10px; background-color:${theme.dotYellow}; margin-left:5px;">&nbsp;</span>
+                    <span style="display:inline-block; width:10px; height:10px; border-radius:10px; background-color:${theme.dotGreen}; margin-left:5px;">&nbsp;</span>
                   </td>
-                  <td style="vertical-align:middle;">
-                    <div style="display:inline-block; padding:6px 12px; border-radius:999px; background:${theme.pillBg}; color:${theme.pillText}; font-size:12px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; border:1px solid ${theme.border};">
-                      New Portfolio Inquiry
-                    </div>
-                    <h1 style="margin:12px 0 6px; font-size:28px; line-height:1.2; font-weight:800; color:${theme.heroText}; letter-spacing:-0.5px;">A new message landed in your inbox</h1>
-                    <p style="margin:0; font-size:14px; line-height:1.6; color:${theme.heroSubtext};">Styled to match your portfolio’s glass cards, soft gradients, and rounded UI.</p>
+                  <td align="right" style="font-family:${mono}; font-size:12px; color:${theme.muted}; vertical-align:middle;">portfolio &mdash; new-message</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Subject + sender -->
+          <tr>
+            <td style="padding:24px 28px 20px;">
+              <div style="font-family:${mono}; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:${theme.green}; padding-bottom:10px;">New message</div>
+              <h1 style="margin:0 0 12px; font-family:${sans}; font-size:20px; line-height:1.35; font-weight:700; color:${theme.text};">${safeSubject}</h1>
+              <div style="font-size:14px; line-height:1.6; color:${theme.textSecondary};">
+                From <span style="font-weight:700; color:${theme.text};">${safeName}</span>
+                &nbsp;&middot;&nbsp;
+                <a href="mailto:${safeEmail}" style="color:${theme.blue}; text-decoration:none;">${safeEmail}</a>
+              </div>
+              <div style="padding-top:6px; font-size:12px; line-height:1.5; color:${theme.muted};">${timestamp}</div>
+            </td>
+          </tr>
+
+          <!-- Message -->
+          <tr>
+            <td style="padding:0 28px 24px;">
+              <div style="font-family:${mono}; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:${theme.muted}; padding-bottom:8px;">Message</div>
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:${theme.panelBg}; border:1px solid ${theme.border}; border-radius:8px;">
+                <tr>
+                  <td style="padding:16px 18px; font-size:15px; line-height:1.7; color:${theme.text}; white-space:pre-wrap; word-break:break-word;">${safeMessage}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Actions -->
+          <tr>
+            <td style="padding:0 28px 28px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="border-radius:8px; background-color:${theme.buttonBg};">
+                    <a href="mailto:${safeEmail}?subject=${encodeURIComponent('Re: ' + (data.subject || 'your message'))}" style="display:inline-block; padding:12px 24px; font-family:${sans}; font-size:14px; line-height:20px; font-weight:700; color:${theme.buttonText}; text-decoration:none; border-radius:8px;">Reply to ${safeFirst}</a>
+                  </td>
+                  <td style="padding-left:18px;">
+                    <a href="https://tsmhabib03.github.io/My-Portfolio-/" style="font-size:14px; font-weight:600; color:${theme.blue}; text-decoration:none;">View portfolio &rarr;</a>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
 
+          <!-- Footer -->
           <tr>
-            <td style="padding:16px 24px; background:${theme.statusBg}; border-bottom:1px solid ${theme.border};">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                <tr>
-                  <td style="font-size:12px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:${theme.statusText};">
-                    <span style="display:inline-block; width:10px; height:10px; border-radius:999px; background:${theme.success}; margin-right:8px;"></span>
-                    Form submitted successfully
-                  </td>
-                  <td align="right" style="font-size:12px; line-height:1.5; color:${theme.muted};">
-                    ${timestamp}
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:24px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                <tr>
-                  <td style="padding-bottom:16px;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${theme.surface}; background-image:${theme.cardGradient}; border:1px solid ${theme.border}; border-radius:22px; box-shadow:0 12px 30px rgba(15,23,42,0.08);">
-                      <tr>
-                        <td style="padding:20px;">
-                          <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:${theme.muted}; margin-bottom:8px;">Name</div>
-                          <div style="font-size:22px; line-height:1.3; font-weight:800; color:${theme.title};">${fullName}</div>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style="padding-bottom:16px;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${theme.surface}; background-image:${theme.cardGradient}; border:1px solid ${theme.border}; border-radius:22px; box-shadow:0 12px 30px rgba(15,23,42,0.08);">
-                      <tr>
-                        <td style="padding:20px;">
-                          <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:${theme.muted}; margin-bottom:8px;">Email</div>
-                          <a href="mailto:${data.email}" style="font-size:18px; line-height:1.5; font-weight:700; color:${theme.primary}; text-decoration:none;">${data.email}</a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style="padding-bottom:16px;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${theme.surface}; background-image:${theme.cardGradient}; border:1px solid ${theme.border}; border-radius:22px; box-shadow:0 12px 30px rgba(15,23,42,0.08);">
-                      <tr>
-                        <td style="padding:20px;">
-                          <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:${theme.muted}; margin-bottom:8px;">Subject</div>
-                          <div style="font-size:18px; line-height:1.5; font-weight:700; color:${theme.title}; margin-bottom:10px;">${subjectText}</div>
-                          <span style="display:inline-block; padding:8px 14px; border-radius:999px; background:${theme.pillBg}; border:1px solid ${theme.border}; color:${theme.pillText}; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">${subjectText}</span>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style="padding-bottom:24px;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${theme.surface}; background-image:${theme.cardGradient}; border:1px solid ${theme.border}; border-radius:24px; box-shadow:0 12px 30px rgba(15,23,42,0.08);">
-                      <tr>
-                        <td style="padding:20px 20px 0;">
-                          <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:${theme.muted}; margin-bottom:8px;">Message</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding:0 20px 20px;">
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${theme.messageBg}; border:1px solid ${theme.border}; border-left:4px solid ${theme.messageBorder}; border-radius:18px;">
-                            <tr>
-                              <td style="padding:18px;">
-                                <div style="font-size:15px; line-height:1.8; color:${theme.text}; white-space:pre-wrap; word-break:break-word;">${safeMessage}</div>
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                      <tr>
-                        <td style="padding-bottom:12px;">
-                          <a href="mailto:${data.email}" style="display:block; text-align:center; padding:16px 20px; background:linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%); color:${theme.buttonText}; font-size:15px; font-weight:800; text-decoration:none; border-radius:18px; box-shadow:0 10px 24px rgba(37,99,235,0.25);">
-                            Reply to ${data.firstName || 'Sender'}
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="https://tsmhabib03.github.io/My-Portfolio-/" style="display:block; text-align:center; padding:15px 20px; background:${theme.secondaryButtonBg}; color:${theme.secondaryButtonText}; font-size:15px; font-weight:700; text-decoration:none; border-radius:18px; border:1px solid ${theme.secondaryButtonBorder};">
-                            View Portfolio
-                          </a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-
-              </table>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:22px 24px; background:${theme.footerBg}; border-top:1px solid ${theme.border};">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                <tr>
-                  <td style="font-size:13px; line-height:1.7; color:${theme.footerText}; text-align:center;">
-                    Portfolio contact notification • Theme: ${isDarkTheme ? 'Dark' : 'Light'} • ${new Date().getFullYear()}<br>
-                    Built to match Habib’s portfolio design system with glass cards, soft gradients, and rounded UI.
-                  </td>
-                </tr>
-              </table>
+            <td style="padding:14px 28px; background-color:${theme.chromeBg}; border-top:1px solid ${theme.borderSubtle}; border-radius:0 0 10px 10px; font-family:${mono}; font-size:11px; line-height:1.6; color:${theme.muted}; text-align:center;">
+              Sent from the contact form on tsmhabib03.github.io &middot; ${theme.name}
             </td>
           </tr>
 
@@ -449,24 +373,23 @@ function sendEmailNotification(data) {
 </html>`;
 
     const plainBody = `
-New Portfolio Inquiry
+New portfolio message
 
-Theme: ${isDarkTheme ? 'Dark' : 'Light'}
-Name: ${fullName}
+From: ${fullName}
 Email: ${data.email}
-Subject: ${subjectText}
-
-Message:
-${safeMessage}
-
+Subject: ${data.subject || 'General Inquiry'}
 Received: ${timestamp}
 
+Message:
+${data.message || 'No message content provided'}
+
+Reply: mailto:${data.email}
 Portfolio: https://tsmhabib03.github.io/My-Portfolio-/
     `.trim();
 
     MailApp.sendEmail({
       to: CONFIG.emailTo,
-      subject: CONFIG.emailSubject,
+      subject: subjectLine,
       htmlBody: htmlBody,
       body: plainBody,
       replyTo: data.email,
@@ -510,14 +433,17 @@ function testFormSubmission() {
     lastName: 'Doe',
     email: 'john.doe@example.com',
     subject: 'Project Collaboration',
-    message: 'Hi! I would like to discuss a potential project collaboration. Please let me know when you are available.',
+    message: 'Hi! I would like to discuss a potential project collaboration.\n\nPlease let me know when you are available.',
     timestamp: new Date().toISOString()
   };
 
   try {
     saveToSheet(testData);
-    sendEmailNotification(testData);
-    console.log('✓ Test submission successful! Check your sheet and email.');
+    // Light (Tokyo Night Light — default)
+    sendEmailNotification(Object.assign({}, testData, { theme: 'light' }));
+    // Dark (Tokyo Night)
+    sendEmailNotification(Object.assign({}, testData, { theme: 'dark' }));
+    console.log('✓ Test submission successful! Check your sheet and both emails (light + dark).');
   } catch (error) {
     console.error('✗ Test failed:', error);
   }

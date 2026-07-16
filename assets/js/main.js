@@ -38,25 +38,37 @@ const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 
 if (mobileMenuToggle && mobileMenu) {
+    const setMenuState = (open) => {
+        mobileMenu.classList.toggle('active', open);
+        mobileMenuToggle.setAttribute('aria-expanded', String(open));
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.classList.toggle('fa-bars', !open);
+        icon.classList.toggle('fa-times', open);
+    };
+    const closeMenu = () => setMenuState(false);
+
     mobileMenuToggle.addEventListener('click', function() {
-        mobileMenu.classList.toggle('active');
-        const icon = this.querySelector('i');
-        if (mobileMenu.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
+        setMenuState(!mobileMenu.classList.contains('active'));
     });
 
     document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        });
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Dismiss with Escape or by tapping outside the nav
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            closeMenu();
+            mobileMenuToggle.focus();
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (mobileMenu.classList.contains('active') &&
+            !mobileMenu.contains(e.target) &&
+            !mobileMenuToggle.contains(e.target)) {
+            closeMenu();
+        }
     });
 }
 
@@ -65,7 +77,7 @@ if (mobileMenuToggle && mobileMenu) {
 // ===================
 
 // ⚠️ IMPORTANT: Replace this URL with your deployed Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRhIWUflHjpSgd-jAFGsoVbcdcHDi-1rbJQY4hxWmNt25Fr9djYUR4zZAAfsQv6GVhqQ/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxCs_Qtzzr5RwwwC6ZzMZ4TZSQMrVvxCvh3eIrTA2kqn2-T8fyJjst81KqBE8D1FDyTxg/exec';
 
 const contactForm = document.getElementById('contact-form');
 
@@ -99,6 +111,7 @@ if (contactForm) {
             email: formData.get('email'),
             subject: formData.get('subject'),
             message: formData.get('message'),
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light',
             timestamp: new Date().toISOString()
         };
 

@@ -1,244 +1,250 @@
-/* ===================
+/* ═══════════════════════════════════════════════════════════
    RESPONSIVE DESIGN
-   =================== */
+   Targets the real markup (Tailwind utilities + custom classes
+   in index.html). Section-ID scoping is used deliberately: it
+   out-ranks Tailwind's runtime-injected utilities without
+   needing !important.
+   ═══════════════════════════════════════════════════════════ */
 
-/* Tablet and Small Desktop */
-@media (max-width: 1024px) {
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .profile-frame {
-        width: 220px;
-        height: 220px;
-    }
-    
-    .hero-title {
-        font-size: 3rem;
-    }
-    
-    .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
+/* ───────────────────────────────────────────────
+   FLUID TYPE — section headings & subtitles
+   (replaces the fixed text-5xl/6xl jump; scales
+   smoothly from phone to desktop)
+   ─────────────────────────────────────────────── */
+#about h2,
+#projects h2,
+#contributions h2,
+#certificates h2,
+#contact h2 {
+    font-size: clamp(2rem, 4vw + 1rem, 3.75rem);
+    line-height: 1.1;
 }
 
-/* Tablet */
-@media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
-        background: var(--bg-secondary);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        transition: var(--transition);
-    }
-    
-    .nav-menu.active {
-        left: 0;
-    }
-    
-    .nav-toggle {
-        display: flex;
-    }
-    
-    .hero-content {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 3rem;
-    }
-    
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .profile-frame {
-        width: 280px;
-        height: 280px;
-    }
-    
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .about-stats {
-        grid-template-columns: 1fr;
-    }
-    
-    .skills-awards-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .skills-grid {
+#about h2 + p,
+#projects h2 + p,
+#contributions h2 + p,
+#certificates h2 + p,
+#contact h2 + p {
+    font-size: clamp(1rem, 0.5vw + 0.875rem, 1.25rem);
+}
+
+/* ───────────────────────────────────────────────
+   PROJECT CARD ACTION ROW
+   (replaces the old `flex space-x-3` utility pair
+   so buttons can wrap on narrow phones)
+   ─────────────────────────────────────────────── */
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* ───────────────────────────────────────────────
+   TABLET — 640px to 1023px
+   Hero sidebar: use the freed horizontal space as
+   a grid instead of three full-width stacked cards
+   ─────────────────────────────────────────────── */
+@media (min-width: 640px) and (max-width: 1023px) {
+    #home .hero-sidebar {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    #home .hero-sidebar > * {
+        margin-top: 0;
+    }
+
+    /* Experience stats span the full row; Tech Stack
+       and Connect share the second row */
+    #home .hero-sidebar > .card:first-child {
+        grid-column: 1 / -1;
     }
 }
 
-/* Mobile and Small Tablet */
+/* ───────────────────────────────────────────────
+   BELOW DESKTOP — ≤1023px
+   ─────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+    /* Cap the hero portrait so it never dominates or
+       overflows small viewports (Tailwind sets a fixed
+       350px that is too tight at 360px wide) */
+    #home .hero-profile-frame {
+        width: min(340px, 80vw);
+        height: min(340px, 80vw);
+    }
+}
+
+/* ───────────────────────────────────────────────
+   MOBILE — ≤768px: vertical rhythm & spacing
+   ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: var(--primary-white);
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding-top: 2rem;
-        transition: var(--transition);
-        box-shadow: var(--shadow-medium);
+    /* Tighter section padding (desktop keeps py-20) */
+    #about,
+    #projects,
+    #contributions,
+    #certificates,
+    #contact {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
     }
-    
-    .nav-menu.active {
-        left: 0;
+
+    /* Section headers: less air below on small screens */
+    #about .about-header,
+    #projects .project-header,
+    #contributions .text-center.mb-12,
+    #certificates .text-center.mb-16 {
+        margin-bottom: 2.5rem;
     }
-    
-    .nav-menu li {
-        margin: 1rem 0;
+
+    #contact .contact-header {
+        margin-bottom: 2rem;
     }
-    
-    .nav-toggle {
-        display: flex;
+
+    #contact .grid {
+        gap: 2rem;
     }
-    
-    .hero {
-        padding: 100px 0 60px;
+
+    /* Hero: reclaim the empty space min-h-screen leaves
+       under the content on short mobile layouts */
+    #home {
         min-height: auto;
+        padding-top: 6.5rem;
+        padding-bottom: 3rem;
     }
-    
-    .hero-content {
-        gap: 1.5rem;
+
+    /* Certificates: slightly tighter slide gap */
+    .cert-track {
+        gap: 16px;
     }
-    
-    .profile-frame {
-        width: 200px;
-        height: 200px;
-    }
-    
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .btn {
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .skill-card {
-        padding: 2rem;
+
+    /* The desktop nav links are hidden here; make sure the
+       dropdown can't linger if the viewport grows past md */
+}
+
+@media (min-width: 768px) {
+    .mobile-menu {
+        display: none !important;
     }
 }
 
-/* Contact section mobile spacing */
-@media (max-width: 768px) {
-    #contact { padding-top: 3rem; padding-bottom: 3rem; }
-    .contact-header { margin-bottom: 2rem !important; }
-    #contact .grid { gap: 2rem; }
-    #contact h2 { font-size: 2rem !important; line-height: 1.2; }
+/* Nav between md and lg: the brand tagline + six links +
+   toggles don't all fit — drop the tagline and tighten the
+   link spacing so nothing wraps */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .nav-tagline {
+        display: none;
+    }
+
+    nav .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+        margin-left: 1rem !important;
+    }
+
+    .nav-title {
+        white-space: nowrap;
+    }
 }
 
-/* Small Mobile */
+/* ───────────────────────────────────────────────
+   SMALL PHONES — ≤480px
+   ─────────────────────────────────────────────── */
 @media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    .nav-container {
-        padding: 0 15px;
-    }
-    
-    .hero-container {
-        padding: 0 15px;
-    }
-    
-    .profile-frame {
-        width: 180px;
-        height: 180px;
-    }
-    
-    .hero-title {
-        font-size: 2.2rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .hero-description {
-        font-size: 0.875rem;
-    }
-    
-    .skill-card {
-        padding: 1.5rem;
-    }
-    
-    .skill-icon {
-        font-size: 2.5rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .profile-frame {
-        width: 250px;
-        height: 250px;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .contact-card {
-        padding: 2rem;
-    }
-    
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .timeline-item {
-        flex-direction: column;
-        text-align: center;
+    /* Nav: drop the tagline row — it is wider than the
+       viewport allows and crowds the toggle buttons */
+    .nav-tagline {
+        display: none;
     }
 
-    /* Center status pill on small screens */
-    #contact { padding-left: 1rem; padding-right: 1rem; }
-    .hero-status-pill {
-        margin-left: auto;
-        margin-right: auto;
+    /* Hero floating icons: pull the -2rem corner offsets
+       inside the viewport so they aren't clipped */
+    #home .hero-floating-icon--top {
+        right: -0.5rem;
     }
 
-    /* Hide extra floating icons on very small screens to prevent overflow */
+    #home .hero-floating-icon--bottom {
+        left: -0.5rem;
+    }
+
+    /* Hide the two extra floating icons to prevent overflow */
     .hero-floating-icon:not(.hero-floating-icon--top):not(.hero-floating-icon--bottom) {
         display: none;
+    }
+
+    /* About photo card icons: same treatment (Tailwind
+       corner utilities, scoped to the About section) */
+    #about .-top-4 { top: -0.5rem; }
+    #about .-bottom-4 { bottom: -0.5rem; }
+    #about .-left-4 { left: -0.5rem; }
+    #about .-right-4 { right: -0.5rem; }
+
+    /* Decorative blur dots beside the hero photo: keep
+       them inside the viewport */
+    #home .-right-10 { right: -0.5rem; }
+    #home .-left-12 { left: -0.5rem; }
+
+    /* Project card buttons: force a clean wrap to
+       full-width rows instead of squeezing text */
+    .project-actions .project-btn {
+        min-width: 9.5rem;
+    }
+}
+
+/* ───────────────────────────────────────────────
+   ABOUT PHOTO CARD — fluid, never overflows
+   (Tailwind fixes it at 400×500 / 450×550; on a
+   360px phone that clips. aspect-ratio keeps the
+   composition, width tracks the viewport.)
+   ─────────────────────────────────────────────── */
+#about .about-photo-frame {
+    width: min(400px, calc(100vw - 3rem));
+    height: auto;
+    aspect-ratio: 4 / 5;
+}
+
+@media (min-width: 1024px) {
+    #about .about-photo-frame {
+        width: 450px;
+    }
+}
+
+/* ───────────────────────────────────────────────
+   TOUCH DEVICES — comfortable ≥44px targets
+   ─────────────────────────────────────────────── */
+@media (pointer: coarse) {
+    .filter-tab,
+    .year-tab {
+        min-height: 44px;
+        padding: 10px 16px;
+    }
+
+    .cert-nav-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .footer-social {
+        width: 44px;
+        height: 44px;
+    }
+
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+    }
+
+    .mobile-menu a {
+        padding: 14px 8px;
+    }
+
+    /* Carousel dots: bigger hit area, same visual size */
+    .cert-dot {
+        width: 18px;
+        height: 18px;
+        padding: 5px;
+        background-clip: content-box;
+    }
+
+    .cert-dot.active {
+        width: 34px;
     }
 }
